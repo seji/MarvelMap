@@ -20,15 +20,17 @@ body {
 <script type="text/javascript"
 	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCEevZNwXfSdSvUSsC72_nmEkD4QXRBopg&sensor=false"></script>
 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
 
 <script type="text/javascript">
 	var location;
 	function initialize() {
 		var myOptions = {
 			center : new google.maps.LatLng(10, -10),
-			zoom : 3,
+			zoom : 4,
 			mapTypeId : google.maps.MapTypeId.ROADMAP,
 
 		};
@@ -40,8 +42,9 @@ body {
 			startLocation = event.latLng;
 			//iw.open(map, marker2);
 			placeMarker(startLocation);
-			//
 			//setTimeout(placeMarker(startLocation), 5000);
+			
+		  
 
 		});
 
@@ -53,7 +56,7 @@ body {
 				draggable : true,
 				map : map
 			});
-			//marker.setMap(map);
+			
 			//iw.open(map, marker);
 		}
 
@@ -66,5 +69,11 @@ body {
 </head>
 <body onload="initialize()">
 	<div id="map_canvas" style="width: 100%; height: 100%"></div>
+	  <div id="111" style="width: 100%; height: 100%">
+
+			window.open("http://localhost:8080/MarvelMap/PointOfInterest"); self.focus();
+
+			</div>
+
 </body>
 </html>
