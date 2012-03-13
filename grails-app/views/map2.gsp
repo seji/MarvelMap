@@ -37,10 +37,13 @@ body {
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
 
+<script type="text/javascript" src="gmap3.min.js"></script>
+
 <script type="text/javascript">
 	var location;
 
 	function initialize() {
+
 		var myOptions = {
 			center : new google.maps.LatLng(10, -10),
 			zoom : 4,
@@ -51,21 +54,16 @@ body {
 				myOptions);
 
 		google.maps.event.addListener(map, 'rightclick', function(event) {
-			//mapZoom = map.getZoom();
 			startLocation = event.latLng;
 			//iw.open(map, marker2);
 			placeMarker(startLocation);
-			//setTimeout(placeMarker(startLocation), 5000);
 
 			//$(function() {alert('Message');});
-
-			$('12345').contextMenu('sdfdS',{offsetX:20, offsetY: 20});
 
 		});
 
 		function placeMarker(pos) {
 			var marker = new google.maps.Marker({
-				//position : new google.maps.LatLng(10, -10.1),
 				position : pos,
 				title : "Езжай сюды!",
 				draggable : true,
@@ -78,13 +76,12 @@ body {
 		var iw = new google.maps.InfoWindow({
 			content : "Езжай сюды!"
 		});
-		//placeMarker();
 	}
 </script>
 </head>
 <body onload="initialize()">
 
 	<div id="map_canvas" style="width: 100%; height: 100%"></div>
-	
+
 </body>
 </html>
