@@ -16,22 +16,10 @@ body {
 #map_canvas {
 	height: 100%
 }
-
-#menu {
-	display: none;
-	position: absolute;
-	padding: 10px;
-	background-color: #ddd;
-	border: 1px solid #000;
-}
 </style>
-
-
-
 
 <script type="text/javascript"
 	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCEevZNwXfSdSvUSsC72_nmEkD4QXRBopg&sensor=false"></script>
-
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script type="text/javascript"
@@ -59,7 +47,10 @@ body {
 
 			//$(function() {alert('Message');});
 
-			$('12345').contextMenu('sdfdS',{offsetX:20, offsetY: 20});
+			$('12345').contextMenu('sdfdS', {
+				offsetX : 20,
+				offsetY : 20
+			});
 
 		});
 
@@ -83,8 +74,6 @@ body {
 </script>
 </head>
 <body onload="initialize()">
-
 	<div id="map_canvas" style="width: 100%; height: 100%"></div>
-	
 </body>
 </html>
