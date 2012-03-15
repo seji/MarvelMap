@@ -53,10 +53,14 @@ body {
 			//mapZoom = map.getZoom();
 			startLocation = event.latLng;
 			//iw.open(map, marker2);
-			//placeMarker(startLocation);
+			placeMarker(startLocation);
 			//$(function() {alert('Message');});
-			var contextMenu = $('#contextMenu');
-
+			//var contextMenu = $('#contextMenu');
+/*			$.get('http://localhost:8080/MarvelMap/Test_menu', function(data) {
+				  $('.result').html(data);
+				  alert('Load was performed.');
+				});
+*/
 		});
 
 		function placeMarker(pos) {
