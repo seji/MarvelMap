@@ -8,7 +8,7 @@ class UrlMappings {
 		}
 
 //		"/"(view:"/index")
-		"/"(view:"/map3")
+		"/"(view:"/map4")
 		"500"(view:'/error')
 	}
 }
