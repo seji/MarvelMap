@@ -3,6 +3,12 @@
 <head>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no"
 	charset='utf-8' />
+	
+	<META HTTP-EQUIV="EXPIRES" CONTENT="-1">
+	<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+	<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+
+
 <title>Marvel Map 0.1</title>
 
 <link rel="stylesheet"
@@ -34,7 +40,8 @@ body {
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
 <!--  -->
-<script type="text/javascript"	src="${resource(dir: 'js', file: 'context_menu.js')}"></script>
+<script type="text/javascript"
+	src="${resource(dir: 'js', file: 'context_menu.js')}"></script>
 
 <script type="text/javascript">
 	var location;
@@ -60,7 +67,13 @@ body {
 				$("#menu").html(data);
 				// alert(data);
 			});
-*/
+	*/		
+			
+			$.get('http://localhost:8080/MarvelMap/PointOfInterest/menu', function(data){
+				$('.contextMenu').html(data);
+
+				});
+
 		});
 
 		/*
@@ -69,7 +82,7 @@ body {
 		var menu = new contextMenu({
 			map : map
 		});
-		
+/*	
 		 // Add some items to the menu
 		 menu.addItem('Zoom In', function(map, latLng) {
 		 map.setZoom(map.getZoom() + 1);
@@ -86,7 +99,7 @@ body {
 		 menu.addItem('Center Here', function(map, latLng) {
 		 map.panTo(latLng);
 		 });
-		 
+*/		 
 	} // end initialize
 </script>
 

@@ -42,6 +42,7 @@
 				// .. then append it to the map object
 				.appendTo(this.theMap.getDiv());
 
+///////////////////////////LISTENER/////////////////////////////////
 			// Display and position the menu
 			g.event.addListener(this.theMap, 'rightclick', function(e)
 			{
@@ -67,7 +68,9 @@
 				// Set the location and fade in the context menu
 				menu.css({ top: y, left: x }).fadeIn(200);
 			});
+/////////////////////////END LISTENER/////////////////////////////////			
 
+			
 			// Hide context menu on several events
 			$.each('click dragstart zoom_changed maptypeid_changed center_changed'.split(' '), function(i,name){
 				g.event.addListener(self.theMap, name, function(){ self.theMenu.hide(); });
@@ -75,120 +78,10 @@
 		}
 	}
 
-	/**
-	 * Add new items to the context menu
-	 *
-	 * @param string   name     Name of the list item.
-	 * @param function callback Function to run when you click the list item
-	 * @return jQuery           The list item that is created.
-	 */
-	contextMenu.prototype.addItem = function(name, loc, callback)
-	{
-		// If no loc was provided
-		if ( typeof loc === 'function')
-		{
-			callback = loc;
-			loc = undefined;
-		}
-
-		// A way to access 'this' object from inside functions
-		var self = this,
-
-			// The name turned into camelCase for use in the li id, and anchor href
-			idName = name.toCamel(),
-
-			// The li element
-			li = $(document.createElement('li'))
-				.attr('id', idName);
-
-		// the anchor element
-		$(document.createElement('a'))
-			.attr('href', '#'+idName).html(name)
-			.appendTo(li)
-
-			// Add some nice hover effects
-			.hover(function() {
-				$(this).parent().toggleClass('hover');
-			})
-
-			// Set the click event
-			.click(function(){
-
-				// fade out the menu
-				self.theMenu.hide();
-
-				// call the callback function - 'this' would refer back to the jQuery object of the item element
-				callback.call(this, self.theMap, self.clickedLatLng);
-
-				// make sure the click doesnt take us anywhere
-				return false;
-			});
-
-		// If `loc` is a number put it at that location
-		if ( typeof loc === 'number' && loc < this.theMenu.find('li').length)
-			this.theMenu.find('li').eq(loc).before(li);
-
-		// .. else appened it to the end of the menu
-		else
-			this.theMenu.find('ul').append(li);
-
-		// Return the whole list item
-		return li;
-	};
-
-	/**
-	 * Add a seperators
-	 *
-	 * @return jQuery The list item that is created.
-	 */
-	contextMenu.prototype.addSep = function(loc)
-	{
-		// Create the li element
-		var li = $(document.createElement('li'))
-			.addClass('separator')
-
-			// .. add a div child
-			.append($(document.createElement('div')))
-
-		// If loc is a number put the li at that location
-		if ( typeof loc === 'number' )
-			this.theMenu.find('li').eq(loc).before(li)
-
-		// .. else appened it to the end
-		else
-			this.theMenu.find('ul').append(li);
-
-		// Return the li element
-		return li
-	};
-
-	/**
-	 * Remove a menu list item.
-	 *
-	 * @param string name The string used to create the list item.
-	 * @param number name The index value of the list item.
-	 * @param jQuery name The jQuery object that is returned by addItem() or addSep()
-	 */
-	contextMenu.prototype.remove = function(item)
-	{
-		// No need to search for name if its a jquery object
-		if ( item instanceof $ )
-			item.remove();
-
-		// Find all the elements and remove the one at the specified index
-		else if ( typeof item === 'number' )
-			this.theMenu.find('li').eq(item).remove()
-
-		// Find all the items by the id name and remove them
-		else if ( typeof item === 'string' )
-		{
-			// Find and remove the element
-			this.theMenu.find('#'+item.toCamel()).remove()
-		}
-	};
-
 	// Expose this to the global object
 	window.contextMenu = contextMenu;
+	
+	
 
 	/**
 	 * Convert a string into a 'camelCase' string
@@ -201,3 +94,9 @@
 		});
 	}
 })(window);
+
+$(document).ready( function(){
+	$("#addPOI").click(function(){
+		  alert('click');
+	});
+	});

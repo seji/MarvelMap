@@ -9,10 +9,36 @@ class PointOfInterestController {
     }
 	
 	
-	def showCreateMenu(){
-		
-		
-		}
+
+	def poiDescription(){
+	
+	
+	}
+	def rateIncrease(){
+	
+	
+	}
+	def rateDecrease(){
+	
+	
+	}
+	def menu(){
+	
+		render(view: "menu")
+	}
+	def poiNew(){
+	
+		render("poiNew")
+//		render(view: "menu")
+	}
+	def poiCreate(){
+	
+	
+	}
+	def getPointOfInterest(){
+	
+	
+	}
 
   
 }
