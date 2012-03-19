@@ -95,8 +95,3 @@
 	}
 })(window);
 
-$(document).ready( function(){
-	$("#addPOI").click(function(){
-		  alert('click');
-	});
-	});
