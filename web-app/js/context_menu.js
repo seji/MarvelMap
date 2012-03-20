@@ -34,10 +34,10 @@
 				.attr('class', 'contextMenu')
 
 				// .. disable the browser context menu on our context menu
-				.bind('contextmenu', function() { return false; })
+//				.bind('contextmenu', function() { return false; })
 
 				// .. append a ul list element
-				.append($(document.createElement('ul')))
+//				.append($(document.createElement('ul')))
 
 				// .. then append it to the map object
 				.appendTo(this.theMap.getDiv());
@@ -68,6 +68,7 @@
 				// Set the location and fade in the context menu
 				menu.css({ top: y, left: x }).fadeIn(200);
 			});
+			
 /////////////////////////END LISTENER/////////////////////////////////			
 
 			
@@ -80,18 +81,5 @@
 
 	// Expose this to the global object
 	window.contextMenu = contextMenu;
-	
-	
-
-	/**
-	 * Convert a string into a 'camelCase' string
-	 *
-	 * @example 'Camel case string'.toCamel() -> 'camelCaseString'
-	 */
-	String.prototype.toCamel = function() {
-		return this.toLowerCase().replace(/(\s)([a-z])/gi, function(match, group1, group2){
-			return group2.toUpperCase().replace(group1,'');
-		});
-	}
 })(window);
 

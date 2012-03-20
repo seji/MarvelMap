@@ -3,10 +3,10 @@
 <head>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no"
 	charset='utf-8' />
-	
-	<META HTTP-EQUIV="EXPIRES" CONTENT="-1">
-	<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
-	<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+
+<META HTTP-EQUIV="EXPIRES" CONTENT="-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
 
 
 <title>Marvel Map 0.1</title>
@@ -59,47 +59,20 @@ body {
 		google.maps.event.addListener(map, 'rightclick', function(event) {
 			startLocation = event.latLng;
 
-			//$(function() {alert('Message');});
-			//var contextMenu = $('#contextMenu');
-/*			$.get('http://localhost:8080/MarvelMap/Test_menu', function(data) {
-				$('.result').html(data);
-				// alert('Load was performed.');
-				$("#menu").html(data);
-				// alert(data);
-			});
-	*/		
-			
-			$.get('http://localhost:8080/MarvelMap/PointOfInterest/menu', function(data){
-				$('.contextMenu').html(data);
-
-				});
+			$.get('http://localhost:8080/MarvelMap/PointOfInterest/menu',
+					function(data) {
+						$('.contextMenu').html(data);
+					});
 
 		});
 
 		/*
 		 * Create the menu and attached it to the map
 		 */
-		var menu = new contextMenu({
+		var context_menu = new contextMenu({
 			map : map
 		});
-/*	
-		 // Add some items to the menu
-		 menu.addItem('Zoom In', function(map, latLng) {
-		 map.setZoom(map.getZoom() + 1);
-		 map.panTo(latLng);
-		 });
 
-		 menu.addItem('Zoom Out', function(map, latLng) {
-		 map.setZoom(map.getZoom() - 1);
-		 map.panTo(latLng);
-		 });
-
-		 //menu.addSep();
-
-		 menu.addItem('Center Here', function(map, latLng) {
-		 map.panTo(latLng);
-		 });
-*/		 
 	} // end initialize
 </script>
 

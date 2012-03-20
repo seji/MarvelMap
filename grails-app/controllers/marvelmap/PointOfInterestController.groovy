@@ -28,8 +28,8 @@ class PointOfInterestController {
 	}
 	def poiNew(){
 	
-		render("poiNew")
-//		render(view: "menu")
+
+		render(view: "poiNew")
 	}
 	def poiCreate(){
 	
