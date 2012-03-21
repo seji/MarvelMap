@@ -17,9 +17,8 @@
 $(document).ready(	function() {
 	$("#addPOI").click(function() {
 			$.get('http://localhost:8080/MarvelMap/PointOfInterest/poiNew',	function(data) {
-			
-			$('#test').html(data);
-			
+				$('.contextMenu').html(data);
+				//alert(clickLocation);
 			});
 	});
 });
