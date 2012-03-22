@@ -1,26 +1,33 @@
-<div id="test">
-<ul>
-	<li id="addPOI"> Add POI</li>
-</ul>
+<style>
+/*	#test .ui-selecting { background: #FECA40; }*/
+/*	#test .ui-selected { background: #F39814; color: white; }*/
+	#test ul:hover { background: #FECA40; color: white;} 
+	#test { list-style-type: none; margin: 0; padding: 0; width: 100%; }
+	#test li { margin: 3px; padding: 0.4em; font-size: 1.2em; height: 18px; }
+	
+</style>	
+	<script>
+	$(function() {
+		$( "#test" ).selectable();
+	});
+	</script>
 
-
-<div id="test2">hello world !</div>
-
-<div>
-<form action="">
-	<input type="text" />
-</form>
-</div>
-
-</div>
 <script type="text/javascript">
-$(document).ready(	function() {
 	$("#addPOI").click(function() {
 			$.get('http://localhost:8080/MarvelMap/PointOfInterest/poiNew',	function(data) {
 				$('.contextMenu').html(data);
-				//alert(clickLocation);
+//				alert(clickLocation);
 			});
 	});
-});
 </script>
 
+
+
+<div id="test">
+	<ul>
+		<li id="addPOI">Add new Point of Interest</li>
+	</ul>
+	<ul>
+		<li id="addPOI">Look what's around</li>
+	</ul>
+</div>

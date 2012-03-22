@@ -48,7 +48,7 @@ body {
 <script type="text/javascript"
 	src="${resource(dir: 'js', file: 'context_menu.js')}"></script>
 
-<script type="text/javascript">
+<!--<script type="text/javascript">
 $(function() {
 	// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
 	$( "#dialog:ui-dialog" ).dialog( "destroy" );
@@ -67,7 +67,7 @@ $(function() {
 		}
 	});
 });
-</script>
+</script>-->
 
 
 
@@ -110,10 +110,10 @@ $(function() {
 
 </head>
 <body onload="initialize()">
-	<div id="dialog-message">
+<!--  -->
+<!--<div id="dialog-message">
 		<p>Здорово чувак!!!</p> <p>Не знаешь куда поехать?</p> <p>Щас узнаешь!!!</p>
-		
-	</div>
+	</div>-->
 	<div id="map_canvas" style="width: 100%; height: 100%"></div>
 
 
