@@ -1,6 +1,6 @@
 package marvelmap
 
-class PointOfInterest {
+class TestPOI {
 //	String id
 	String name
 	Date dateAdded

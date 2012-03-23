@@ -83,18 +83,21 @@ $(function() {
 		};
 		var map = new google.maps.Map(document.getElementById("map_canvas"),
 				myOptions);
-
+		//make map global variable
+		//window.map = map;
 		google.maps.event.addListener(map, 'rightclick', function(event) {
 			clickLocation = event.latLng;
 
 			//make location global variable
-			window.clickLocation = clickLocation;
+			//window.clickLocation = clickLocation;
 
 			$.get('http://localhost:8080/MarvelMap/PointOfInterest/menu',
 					function(data) {
 						//				alert(clickLocation);
 						$('.contextMenu').html(data);
 					});
+
+
 
 		});
 

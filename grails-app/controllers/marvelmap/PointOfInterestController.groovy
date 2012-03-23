@@ -32,8 +32,22 @@ class PointOfInterestController {
 		render(view: "poiNew")
 	}
 	def poiCreate(){
-	
-	
+
+////////////////		
+
+	def poiInstance = new PointOfInterest(params)
+	poiInstance.properties = params
+	return [poiInstance: poiInstance]
+		
+///////////////			
+/*
+def offerInstance = new Offer()
+        offerInstance.properties = params
+        return [offerInstance: offerInstance]
+ */
+			
+				
+
 	}
 	def getPointOfInterest(){
 	
