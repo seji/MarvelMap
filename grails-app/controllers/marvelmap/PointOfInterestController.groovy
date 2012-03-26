@@ -40,15 +40,15 @@ class PointOfInterestController {
 	return [poiInstance: poiInstance]
 		
 ///////////////			
-/*
-def offerInstance = new Offer()
-        offerInstance.properties = params
-        return [offerInstance: offerInstance]
- */
-			
-				
-
+	
 	}
+	
+///////////////////////
+
+///////////////////////		
+	
+	
+
 	def getPointOfInterest(){
 	
 	

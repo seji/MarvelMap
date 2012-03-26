@@ -1,6 +1,6 @@
 
 <style>
-/*		body { font-size: 62.5%; }*/
+/*body { font-size: 62.5%; }*/
 label,input {display: block;}
 input.text {margin-bottom: 12px;width: 95%;padding: .4em;}
 fieldset {padding: 0;border: 0;margin-top: 25px;}
@@ -18,6 +18,9 @@ fieldset {padding: 0;border: 0;margin-top: 25px;}
 			buttons : {
 				"Create Point of Interest" : function() {
 					//alert(clickLocation);
+					$.get('http://localhost:8080/MarvelMap/TestPOI/save');
+					//				alert(clickLocation);
+			
 					$(this).dialog("close");
 				},
 				Cancel : function() {
@@ -28,8 +31,6 @@ fieldset {padding: 0;border: 0;margin-top: 25px;}
 	});
 </script>
 
-
-
 <div id="dialog-form" title="Create new Point of Interest">
 	<form>
 		<fieldset>
@@ -37,9 +38,7 @@ fieldset {padding: 0;border: 0;margin-top: 25px;}
 			<input type="text" name="poiName" id="poiName" class="text ui-widget-content ui-corner-all" /> 
 			<label for="poiDesc">Enter your description</label> 
 			<input type="text" name="poiDesc" id="poiDesc" value=""	class="text ui-widget-content ui-corner-all" />
-			
 			<script>document.write(variable)</script>
-
 		</fieldset>
 	</form>
 </div>
