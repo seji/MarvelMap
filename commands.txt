@@ -1,0 +1,56 @@
+1. reading uopdates descriptions
+apt-get update
+
+2.upgrading apps
+apt-get upgrade 
+continue(yes)
+
+3.upgr system
+apt-get dist-upgrade
+
+
+4.inst git-core
+apt-get install git-core
+
+5. inst apps, tools
+apt-get install mc locate ubuntu-dev-tools sysv-rc-conf
+
+6. inst utils
+apt-get install zip libcurl4-gnutls-dev libcurl-ocaml-dev libmagick9-dev libssl-dev libxslt-dev libxml2-dev nodejs
+
+7. mongoDB
+apt-get install mongodb mongodb-clients mongodb-dev mongodb-server
+
+
+8. Config GIT
+ssh-keygen -t rsa -C "your_email@youremail.com"
+enter
+enter
+enter
+
+git config --global user.name "Firstname Lastname"
+git config --global user.email "your_email@youremail.com"
+git config --global github.user username
+git config --global github.token 0123456789yourf0123456789token
+ssh -T git@github.com
+mkdir /var/MarvelMap
+cd /var/MarvelMap
+git clone git@github.com:seji/MarvelMap.git
+
+git pull
+
+git status
+
+git add .
+
+git diff
+
+git commit -am "comment"
+
+git push
+
+export JAVA_HOME=/opt/jdk1.6.0_27
+export PATH=$PATH:/opt/jdk1.6.0_27/bin
+export CATALINA_HOME=/usr/share/tomcat7
+export CATALINA_BASE=/var/lib/tomcat7
+
