@@ -18,7 +18,7 @@ fieldset {padding: 0;border: 0;margin-top: 25px;}
 			buttons : {
 				"Create Point of Interest" : function() {
 					//alert(clickLocation);
-					$.get('http://localhost:8080/MarvelMap/TestPOI/save');
+					$.get('http://localhost:8080/MarvelMap/PointOfInterest/poiNew');
 					//				alert(clickLocation);
 			
 					$(this).dialog("close");

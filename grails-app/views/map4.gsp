@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="initial-scale=1.0, user-scalable=no"
-	charset='utf-8' />
-
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no"	charset='utf-8' />
 <META HTTP-EQUIV="EXPIRES" CONTENT="-1">
 <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
 <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
@@ -91,7 +89,7 @@ $(function() {
 			//make location global variable
 			//window.clickLocation = clickLocation;
 
-			$.get('http://localhost:8080/MarvelMap/PointOfInterest/menu',
+			$.get('/MarvelMap/PointOfInterest/menu',
 					function(data) {
 						//				alert(clickLocation);
 						$('.contextMenu').html(data);

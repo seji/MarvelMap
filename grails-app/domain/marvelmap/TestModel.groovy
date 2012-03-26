@@ -1,6 +1,6 @@
 package marvelmap
 
-class TestPOI {
+class TestModel {
 //	String id
 	String name
 	Date dateAdded
