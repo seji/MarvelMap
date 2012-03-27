@@ -4,7 +4,7 @@ class PointOfInterest {
 //	String id
 	String name
 	Date dateAdded
-	String Description
+	String description
 	
 	String toString(){"${name}"}
 

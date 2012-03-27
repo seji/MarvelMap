@@ -21,8 +21,6 @@ class PointOfInterestController {
 
 	def poiCreate(){
 		println(params);
-		def poiInstance = new PointOfInterest(params)poiInstance.properties = params
-		return [poiInstance: poiInstance]
 	}
 	/////////////////////////////////////////////////////////////////////////
 	def poiNew() {
@@ -40,12 +38,14 @@ class PointOfInterestController {
 		def pointOfInterestInstance = new PointOfInterest(params)
 		if (!pointOfInterestInstance.save(flush: true)) {
 			render(view: "create", model: [pointOfInterestInstance: pointOfInterestInstance])
+			println(params);
 			return
 		}
 		flash.message = message(code: 'default.created.message', args: [
 			message(code: 'testModel.label', default: 'TestModel'),
 			pointOfInterestInstance.id
 		])
+		println(params);
 		//redirect(action: "show", id: pointOfInterestInstance.id)
 		redirect(action: "list", params: params)
 	}
