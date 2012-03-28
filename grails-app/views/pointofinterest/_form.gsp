@@ -1,7 +1,7 @@
 <%@ page import="marvelmap.PointOfInterest" %>
 
 
-
+<!-- 
 <div class="fieldcontain ${hasErrors(bean: pointOfInterestInstance, field: 'dateAdded', 'error')} required">
 	<label for="dateAdded">
 		<g:message code="pointOfInterest.dateAdded.label" default="Date Added" />
@@ -9,7 +9,7 @@
 	</label>
 	<g:datePicker name="dateAdded" precision="day"  value="${pointOfInterestInstance?.dateAdded}"  />
 </div>
-
+ -->
 <div class="fieldcontain ${hasErrors(bean: pointOfInterestInstance, field: 'description', 'error')} ">
 	<label for="description">
 		<g:message code="pointOfInterest.description.label" default="Description" />

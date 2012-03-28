@@ -1,13 +1,15 @@
 package marvelmap
 
 class PointOfInterest {
-//	String id
+	//	String id
 	String name
-	Date dateAdded
+	Date dateAdded = new Date();
 	String description
-	
+
 	String toString(){"${name}"}
 
-    static constraints = {
-    }
+	static constraints = {
+		name();
+		description();
+	}
 }
