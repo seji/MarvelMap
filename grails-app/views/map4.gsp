@@ -75,7 +75,7 @@ $(function() {
 	function initialize() {
 		var myOptions = {
 			center : new google.maps.LatLng(10, -10),
-			zoom : 4,
+			zoom : 15,
 			mapTypeId : google.maps.MapTypeId.ROADMAP,
 
 		};
@@ -94,9 +94,6 @@ $(function() {
 						//				alert(clickLocation);
 						$('.contextMenu').html(data);
 					});
-
-
-
 		});
 
 		/*
@@ -111,9 +108,8 @@ $(function() {
 
 </head>
 <body onload="initialize()">
-<!--  -->
 <!--<div id="dialog-message">
-		<p>Здорово чувак!!!</p> <p>Не знаешь куда поехать?</p> <p>Щас узнаешь!!!</p>
+		<p>Welcome screen</p>
 	</div>-->
 	<div id="map_canvas" style="width: 100%; height: 100%"></div>
 

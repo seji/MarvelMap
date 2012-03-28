@@ -23,11 +23,11 @@
 			</g:if>
 			<ol class="property-list pointOfInterest">
 			
-				<g:if test="${pointOfInterestInstance?.dateAdded}">
+				<g:if test="${pointOfInterestInstance?.name}">
 				<li class="fieldcontain">
-					<span id="dateAdded-label" class="property-label"><g:message code="pointOfInterest.dateAdded.label" default="Date Added" /></span>
+					<span id="name-label" class="property-label"><g:message code="pointOfInterest.name.label" default="Name" /></span>
 					
-						<span class="property-value" aria-labelledby="dateAdded-label"><g:formatDate date="${pointOfInterestInstance?.dateAdded}" /></span>
+						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${pointOfInterestInstance}" field="name"/></span>
 					
 				</li>
 				</g:if>
@@ -41,11 +41,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${pointOfInterestInstance?.name}">
+				<g:if test="${pointOfInterestInstance?.dateAdded}">
 				<li class="fieldcontain">
-					<span id="name-label" class="property-label"><g:message code="pointOfInterest.name.label" default="Name" /></span>
+					<span id="dateAdded-label" class="property-label"><g:message code="pointOfInterest.dateAdded.label" default="Date Added" /></span>
 					
-						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${pointOfInterestInstance}" field="name"/></span>
+						<span class="property-value" aria-labelledby="dateAdded-label"><g:formatDate date="${pointOfInterestInstance?.dateAdded}" /></span>
 					
 				</li>
 				</g:if>

@@ -10,13 +10,48 @@ class TestModelController {
         redirect(action: "list", params: params)
     }
 
+///////////////////////
+	
+	def poiDescription(){
+	}
+
+	def rateIncrease(){
+	}
+
+	def rateDecrease(){
+	}
+
+	def menu(){
+		println(params);
+	}
+
+	def poiCreate(){
+		println(params);
+	}
+	
+	def getPointOfInterest(){
+		println(params);
+	}
+
+		def poiNew() {
+		println(params);
+		[pointOfInterestInstance: new PointOfInterest(params)]
+	}
+	
+//////////////////////	
+	
+	
+	
     def list() {
+		println(params);
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
         [testModelInstanceList: TestModel.list(params), testModelInstanceTotal: TestModel.count()]
+//		println(params);
     }
 
     def create() {
         [testModelInstance: new TestModel(params)]
+		println(params);
     }
 
     def save() {
@@ -27,8 +62,8 @@ class TestModelController {
         }
 
 		flash.message = message(code: 'default.created.message', args: [message(code: 'testModel.label', default: 'TestModel'), testModelInstance.id])
-        //redirect(action: "show", id: testModelInstance.id)
-		redirect(action: "list", params: params)
+        redirect(action: "show", id: testModelInstance.id)
+		println(params);
     }
 
     def show() {
@@ -40,6 +75,7 @@ class TestModelController {
         }
 
         [testModelInstance: testModelInstance]
+		println(params);
     }
 
     def edit() {

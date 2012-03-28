@@ -1,11 +1,17 @@
 package marvelmap
+
+import org.springframework.dao.DataIntegrityViolationException
+
 class PointOfInterestController {
 
-	def index = {
-		//redirect(action: "showCreateMenu", params: params)
-		render('index: Hello !!!!');
-	}
+    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
+    def index() {
+        redirect(action: "list", params: params)
+    }
+
+	///////////////////////
+	
 	def poiDescription(){
 	}
 
@@ -16,45 +22,113 @@ class PointOfInterestController {
 	}
 
 	def menu(){
-		println(params);
 	}
 
 	def poiCreate(){
-		println(params);
+		//println(params);
 	}
-	/////////////////////////////////////////////////////////////////////////
-	def poiNew() {
-		println(params);
-		[pointOfInterestInstance: new PointOfInterest(params)]
-	}
-
-	def create() {
-		println(params);
-		[pointOfInterestInstance: new PointOfInterest(params)]
-	}
-
-	def save() {
-		def pointOfInterestInstance = new PointOfInterest(params)
-		if (!pointOfInterestInstance.save(flush: true)) {
-			render(view: "create", model: [pointOfInterestInstance: pointOfInterestInstance])
-			println("1");
-			println(params);
-			return
-		}
-//		flash.message = message(code: 'default.created.message', args: [message(code: 'testModel.label', default: 'TestModel'),pointOfInterestInstance.id])
-		println("2");
-		println(params);
-		//redirect(action: "show", id: pointOfInterestInstance.id)
-		redirect(action: "list", params: params)
-	}
-
-	def list() {
-		params.max = Math.min(params.max ? params.int('max') : 10, 100)
-		[pointOfInterestInstanceList: PointOfInterest.list(params), pointOfInterestInstanceTotal: PointOfInterest.count()]
-		println(params);
-	}
-
+	
 	def getPointOfInterest(){
-		println(params);
+
 	}
+
+		def poiNew() {
+		//println(params);
+        [pointOfInterestInstance: new PointOfInterest(params)]
+	}
+	
+//////////////////////
+	
+	
+	
+    def list() {
+        params.max = Math.min(params.max ? params.int('max') : 10, 100)
+        [pointOfInterestInstanceList: PointOfInterest.list(params), pointOfInterestInstanceTotal: PointOfInterest.count()]
+    }
+
+    def create() {
+        [pointOfInterestInstance: new PointOfInterest(params)]
+    }
+
+    def save() {
+        def pointOfInterestInstance = new PointOfInterest(params)
+        if (!pointOfInterestInstance.save(flush: true)) {
+            render(view: "create", model: [pointOfInterestInstance: pointOfInterestInstance])
+            return
+        }
+
+		flash.message = message(code: 'default.created.message', args: [message(code: 'pointOfInterest.label', default: 'PointOfInterest'), pointOfInterestInstance.id])
+        redirect(action: "show", id: pointOfInterestInstance.id)
+    }
+
+    def show() {
+        def pointOfInterestInstance = PointOfInterest.get(params.id)
+        if (!pointOfInterestInstance) {
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'pointOfInterest.label', default: 'PointOfInterest'), params.id])
+            redirect(action: "list")
+            return
+        }
+
+        [pointOfInterestInstance: pointOfInterestInstance]
+    }
+
+    def edit() {
+        def pointOfInterestInstance = PointOfInterest.get(params.id)
+        if (!pointOfInterestInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'pointOfInterest.label', default: 'PointOfInterest'), params.id])
+            redirect(action: "list")
+            return
+        }
+
+        [pointOfInterestInstance: pointOfInterestInstance]
+    }
+
+    def update() {
+        def pointOfInterestInstance = PointOfInterest.get(params.id)
+        if (!pointOfInterestInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'pointOfInterest.label', default: 'PointOfInterest'), params.id])
+            redirect(action: "list")
+            return
+        }
+
+        if (params.version) {
+            def version = params.version.toLong()
+            if (pointOfInterestInstance.version > version) {
+                pointOfInterestInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
+                          [message(code: 'pointOfInterest.label', default: 'PointOfInterest')] as Object[],
+                          "Another user has updated this PointOfInterest while you were editing")
+                render(view: "edit", model: [pointOfInterestInstance: pointOfInterestInstance])
+                return
+            }
+        }
+
+        pointOfInterestInstance.properties = params
+
+        if (!pointOfInterestInstance.save(flush: true)) {
+            render(view: "edit", model: [pointOfInterestInstance: pointOfInterestInstance])
+            return
+        }
+
+		flash.message = message(code: 'default.updated.message', args: [message(code: 'pointOfInterest.label', default: 'PointOfInterest'), pointOfInterestInstance.id])
+        redirect(action: "show", id: pointOfInterestInstance.id)
+    }
+
+    def delete() {
+        def pointOfInterestInstance = PointOfInterest.get(params.id)
+        if (!pointOfInterestInstance) {
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'pointOfInterest.label', default: 'PointOfInterest'), params.id])
+            redirect(action: "list")
+            return
+        }
+
+        try {
+            pointOfInterestInstance.delete(flush: true)
+			flash.message = message(code: 'default.deleted.message', args: [message(code: 'pointOfInterest.label', default: 'PointOfInterest'), params.id])
+            redirect(action: "list")
+        }
+        catch (DataIntegrityViolationException e) {
+			flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'pointOfInterest.label', default: 'PointOfInterest'), params.id])
+            redirect(action: "show", id: params.id)
+        }
+    }
 }

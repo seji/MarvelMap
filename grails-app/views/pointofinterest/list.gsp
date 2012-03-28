@@ -3,7 +3,7 @@
 <!doctype html>
 <html>
 	<head>
-		<meta name="layout" content="main"> 
+		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'pointOfInterest.label', default: 'PointOfInterest')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
@@ -24,11 +24,11 @@
 				<thead>
 					<tr>
 					
-						<g:sortableColumn property="dateAdded" title="${message(code: 'pointOfInterest.dateAdded.label', default: 'Date Added')}" />
+						<g:sortableColumn property="name" title="${message(code: 'pointOfInterest.name.label', default: 'Name')}" />
 					
 						<g:sortableColumn property="description" title="${message(code: 'pointOfInterest.description.label', default: 'Description')}" />
 					
-						<g:sortableColumn property="name" title="${message(code: 'pointOfInterest.name.label', default: 'Name')}" />
+						<g:sortableColumn property="dateAdded" title="${message(code: 'pointOfInterest.dateAdded.label', default: 'Date Added')}" />
 					
 					</tr>
 				</thead>
@@ -36,21 +36,19 @@
 				<g:each in="${pointOfInterestInstanceList}" status="i" var="pointOfInterestInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${pointOfInterestInstance.id}">${fieldValue(bean: pointOfInterestInstance, field: "dateAdded")}</g:link></td>
+						<td><g:link action="show" id="${pointOfInterestInstance.id}">${fieldValue(bean: pointOfInterestInstance, field: "name")}</g:link></td>
 					
 						<td>${fieldValue(bean: pointOfInterestInstance, field: "description")}</td>
 					
-						<td>${fieldValue(bean: pointOfInterestInstance, field: "name")}</td>
+						<td><g:formatDate date="${pointOfInterestInstance.dateAdded}" /></td>
 					
 					</tr>
 				</g:each>
 				</tbody>
 			</table>
-  			<div class="pagination">
+			<div class="pagination">
 				<g:paginate total="${pointOfInterestInstanceTotal}" />
 			</div>
-		 
-			
 		</div>
 	</body>
 </html>
