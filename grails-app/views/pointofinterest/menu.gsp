@@ -18,26 +18,23 @@
 
 <script type="text/javascript">
 	$("#addPOI").click(function() {
-			$.get('/MarvelMap/PointOfInterest/poiNew',	function(data) {
+			$.get('/MarvelMap/PointOfInterest/poiNew', function(data) {
 				$('.contextMenu').html(data);
-//				alert(clickLocation);
 			});
 	});
 </script>
 
 <script type="text/javascript">
 	$("#lookAround").click(function() {
-			$.get('/MarvelMap/PointOfInterest/create',	function(data) {
+			$.get('/MarvelMap/PointOfInterest/create', function(data) {
 				$('.contextMenu').html(data);
-//				alert(clickLocation);
 			});
 	});
 </script>
 <script type="text/javascript">
 	$("#showList").click(function() {
-			$.get('/MarvelMap/PointOfInterest/list',	function(data) {
+			$.get('/MarvelMap/PointOfInterest/list', function(data) {
 				$('.contextMenu').html(data);
-//				alert(clickLocation);
 			});
 	});
 </script>
@@ -48,7 +45,7 @@
 		<li id="addPOI">Add new Point of Interest</li>
 	</ul>
 	<ul>
-		<li id="lookAround">Look what's around</li>
+		<li id="lookAround">Create</li>
 	</ul>
 	<ul>
 		<li id="showList">Show List</li>

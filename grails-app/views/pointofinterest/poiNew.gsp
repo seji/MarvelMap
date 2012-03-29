@@ -15,13 +15,10 @@ fieldset {padding: 0;border: 0;margin-top: 25px;}
 			resizable : false,
 			draggable : false,
 			buttons : {
-				"Create Point of Interest" : function() {
-					//alert(clickLocation);
-//					$.get('/MarvelMap/PointOfInterest/save');
-					$.post('/MarvelMap/PointOfInterest/save',$('form').serialize());
-					//				alert(clickLocation);
-			
-					//$(this).dialog("close");
+				"Create" : function() {
+					$.post('/MarvelMap/PointOfInterest/save',$('form').serialize(), 
+							function(data){ $('.contextMenu').html(data);	});
+					$(this).dialog("close");
 					 				},
 				"Cancel" : function() {
 					$(this).dialog("close");
@@ -39,7 +36,9 @@ fieldset {padding: 0;border: 0;margin-top: 25px;}
 
 			<label for="poiDesc">Enter your description</label> 
 			<g:textField name="description" value="${pointOfInterestInstance?.description}" class="text ui-widget-content ui-corner-all" />
-						
+					<fieldset class="buttons">
+					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+				</fieldset>	
 <!--  			<script>document.write(variable)</script> -->
 		</fieldset>
 	</g:form>

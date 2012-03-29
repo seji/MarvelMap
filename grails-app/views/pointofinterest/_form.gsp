@@ -17,12 +17,3 @@
 	</label>
 	<g:textField name="description" value="${pointOfInterestInstance?.description}"/>
 </div>
-
-<div class="fieldcontain ${hasErrors(bean: pointOfInterestInstance, field: 'dateAdded', 'error')} required">
-	<label for="dateAdded">
-		<g:message code="pointOfInterest.dateAdded.label" default="Date Added" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="dateAdded" precision="day"  value="${pointOfInterestInstance?.dateAdded}"  />
-</div>
-
