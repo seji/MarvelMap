@@ -65,8 +65,9 @@ class PointOfInterestController {
 
 		//flash.message = message(code: 'default.created.message', args: [message(code: 'pointOfInterest.label', default: 'PointOfInterest'), pointOfInterestInstance.id])
 		//redirect(action: "show", id: pointOfInterestInstance.id)
-		redirect(action: "poiSaveConfirm", id: pointOfInterestInstance.id)
+		redirect(action: "poiSaveConfirm")
 		println(params);
+		
 	}
 
 	def show() {
