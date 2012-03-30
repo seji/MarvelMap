@@ -50,6 +50,33 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${pointOfInterestInstance?.lat}">
+				<li class="fieldcontain">
+					<span id="lat-label" class="property-label"><g:message code="pointOfInterest.lat.label" default="Lat" /></span>
+					
+						<span class="property-value" aria-labelledby="lat-label"><g:fieldValue bean="${pointOfInterestInstance}" field="lat"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${pointOfInterestInstance?.lng}">
+				<li class="fieldcontain">
+					<span id="lng-label" class="property-label"><g:message code="pointOfInterest.lng.label" default="Lng" /></span>
+					
+						<span class="property-value" aria-labelledby="lng-label"><g:fieldValue bean="${pointOfInterestInstance}" field="lng"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${pointOfInterestInstance?.rating}">
+				<li class="fieldcontain">
+					<span id="rating-label" class="property-label"><g:message code="pointOfInterest.rating.label" default="Rating" /></span>
+					
+						<span class="property-value" aria-labelledby="rating-label"><g:fieldValue bean="${pointOfInterestInstance}" field="rating"/></span>
+					
+				</li>
+				</g:if>
+			
 			</ol>
 			<g:form>
 				<fieldset class="buttons">

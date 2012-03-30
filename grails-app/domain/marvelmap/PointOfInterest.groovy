@@ -3,8 +3,11 @@ package marvelmap
 class PointOfInterest {
 	//	String id
 	String name
-	Date dateAdded = new Date();
 	String description
+	Date dateAdded = new Date();
+	String lat
+	String lng
+	Long rating=1;
 
 	String toString(){"${name}"}
 

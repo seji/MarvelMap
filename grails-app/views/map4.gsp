@@ -70,7 +70,7 @@ $(function() {
 
 
 <script type="text/javascript">
-	var location;
+	//var location;
 
 	function initialize() {
 		var myOptions = {
@@ -85,13 +85,10 @@ $(function() {
 		//window.map = map;
 		google.maps.event.addListener(map, 'rightclick', function(event) {
 			clickLocation = event.latLng;
-
-			//make location global variable
-			//window.clickLocation = clickLocation;
+			clickZoom = map.getZoom();
 
 			$.get('/MarvelMap/PointOfInterest/menu',
 					function(data) {
-						//				alert(clickLocation);
 						$('.contextMenu').html(data);
 					});
 		});

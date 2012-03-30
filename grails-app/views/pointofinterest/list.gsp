@@ -30,6 +30,12 @@
 					
 						<g:sortableColumn property="dateAdded" title="${message(code: 'pointOfInterest.dateAdded.label', default: 'Date Added')}" />
 					
+						<g:sortableColumn property="lat" title="${message(code: 'pointOfInterest.lat.label', default: 'Lat')}" />
+					
+						<g:sortableColumn property="lng" title="${message(code: 'pointOfInterest.lng.label', default: 'Lng')}" />
+					
+						<g:sortableColumn property="rating" title="${message(code: 'pointOfInterest.rating.label', default: 'Rating')}" />
+					
 					</tr>
 				</thead>
 				<tbody>
@@ -41,6 +47,12 @@
 						<td>${fieldValue(bean: pointOfInterestInstance, field: "description")}</td>
 					
 						<td><g:formatDate date="${pointOfInterestInstance.dateAdded}" /></td>
+					
+						<td>${fieldValue(bean: pointOfInterestInstance, field: "lat")}</td>
+					
+						<td>${fieldValue(bean: pointOfInterestInstance, field: "lng")}</td>
+					
+						<td>${fieldValue(bean: pointOfInterestInstance, field: "rating")}</td>
 					
 					</tr>
 				</g:each>
