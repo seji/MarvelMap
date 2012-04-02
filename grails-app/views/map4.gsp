@@ -67,11 +67,7 @@ $(function() {
 });
 </script>-->
 
-
-
 <script type="text/javascript">
-	//var location;
-
 	function initialize() {
 		var myOptions = {
 			center : new google.maps.LatLng(10, -10),
@@ -79,10 +75,7 @@ $(function() {
 			mapTypeId : google.maps.MapTypeId.ROADMAP,
 
 		};
-		var map = new google.maps.Map(document.getElementById("map_canvas"),
-				myOptions);
-		//make map global variable
-		//window.map = map;
+		var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 		google.maps.event.addListener(map, 'rightclick', function(event) {
 			clickLocation = event.latLng;
 			clickZoom = map.getZoom();

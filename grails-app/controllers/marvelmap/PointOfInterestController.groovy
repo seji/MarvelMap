@@ -25,11 +25,9 @@ class PointOfInterestController {
 	}
 
 	def poiCreate(){
-		//println(params);
 	}
 
 	def getPointOfInterest(){
-
 	}
 
 	def poiNew() {
@@ -74,7 +72,7 @@ class PointOfInterestController {
 		def pointOfInterestInstance = PointOfInterest.get(params.id)
 		if (!pointOfInterestInstance) {
 			flash.message = message(code: 'default.not.found.message', args: [
-				message(code: 'pointOfInterest.label', default: 'PointOfInterest'),
+				message(code:'pointOfInterest.label', default: 'PointOfInterest'),
 				params.id
 			])
 			redirect(action: "list")

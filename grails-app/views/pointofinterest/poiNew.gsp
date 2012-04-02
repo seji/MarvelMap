@@ -17,6 +17,8 @@ fieldset {
 }
 </style>
 <script type="text/javascript">
+
+
 	$(function() {
 		$("#dialog-form").dialog(
 				{
@@ -37,9 +39,10 @@ fieldset {
 							$.post('/MarvelMap/PointOfInterest/save', $('form').serialize(), 
 									function(data) {$('.contextMenu').html(data);}
 							);
-							//$(this).dialog("close");
-							$(this).dialog( "destroy" );
-							//window.location.reload(true);
+						
+							$(this).dialog("close");
+							//$(this).dialog( "destroy" );
+							
 							//location.reload();
 							
 						},
