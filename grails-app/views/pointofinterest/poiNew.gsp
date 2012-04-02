@@ -37,9 +37,13 @@ fieldset {
 							document.getElementById('zoom').value=clickZoom.toString();
 							
 							$.post('/MarvelMap/PointOfInterest/save', $('form').serialize(), 
-									function(data) {$('.contextMenu').html(data);}
+									function(data) {
+									
+										$('.contextMenu').html(data);
+										//Clear form data
+										$('form').empty();
+									}
 							);
-						
 							$(this).dialog("close");
 							//$(this).dialog( "destroy" );
 							

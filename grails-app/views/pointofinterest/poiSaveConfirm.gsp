@@ -9,7 +9,7 @@ $(function() {
 			"OK": function() {
 				$( this ).dialog( "close" );
 				//location.reload();
-				window.location.reload(true);
+				//window.location.reload(true);
 			}
 		}
 	});
