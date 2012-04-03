@@ -1,18 +1,29 @@
-dataSource {
+/*dataSource {
     pooled = true
     driverClassName = "org.h2.Driver"
     username = "sa"
     password = ""
-}
-hibernate {
+}*/
+/*hibernate {
     cache.use_second_level_cache = true
     cache.use_query_cache = true
     cache.region.factory_class = 'net.sf.ehcache.hibernate.EhCacheRegionFactory'
-}
+}*/
 // environment specific settings
 environments {
     development {
-        dataSource {
+	
+		grails {
+			mongo {
+				host = "localhost"
+				port = 27017
+				username = ""
+				password = ""
+				databaseName = "mm-prod"
+			}
+		}
+		
+/*        dataSource {
             dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
             url = "jdbc:h2:mem:devDb;MVCC=TRUE"
         }
@@ -38,6 +49,6 @@ environments {
                testOnReturn=true
                validationQuery="SELECT 1"
             }
-        }
+        }*/
     }
 }

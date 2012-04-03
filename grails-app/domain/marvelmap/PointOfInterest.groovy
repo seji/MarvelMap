@@ -9,7 +9,11 @@ class PointOfInterest {
 	String lng
 	Long rating=1;
 
+ //	static mapWith="mongo"
+	
 	String toString(){"${name}"}
+	
+	
 	
 	static constraints = {
 		name();

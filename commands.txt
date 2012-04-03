@@ -54,3 +54,7 @@ export PATH=$PATH:/opt/jdk1.6.0_27/bin
 export CATALINA_HOME=/usr/share/tomcat7
 export CATALINA_BASE=/var/lib/tomcat7
 
+
+===========================mongo
+
+mongod.exe --logpath c:\mongo\logs\mongo.log --logappend --dbpath c:\mongo\data --install

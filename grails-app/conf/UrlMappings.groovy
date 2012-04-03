@@ -11,5 +11,6 @@ class UrlMappings {
 		"/"(view:"/map4")
 //		"/test"(view:"/map3")
 		"500"(view:'/error')
+		
 	}
 }
