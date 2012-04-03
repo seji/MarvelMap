@@ -40,18 +40,14 @@ fieldset {
 									function(data) {
 									
 										$('.contextMenu').html(data);
-										//Clear form data
-										$('form').empty();
+										$('form').empty();//Clear form data
 									}
 							);
 							$(this).dialog("close");
-							//$(this).dialog( "destroy" );
-							
-							//location.reload();
-							
 						},
 						"Cancel" : function() {
 							$(this).dialog("close");
+							$('form').empty();//Clear form data
 						}
 					}
 				});

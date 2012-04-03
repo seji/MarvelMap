@@ -75,10 +75,11 @@ $(function() {
 			mapTypeId : google.maps.MapTypeId.ROADMAP,
 
 		};
-		var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+		/*var*/ map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 		google.maps.event.addListener(map, 'rightclick', function(event) {
 			clickLocation = event.latLng;
 			clickZoom = map.getZoom();
+//			placeMarker(clickLocation);
 
 			$.get('/MarvelMap/PointOfInterest/menu',
 					function(data) {
@@ -93,8 +94,23 @@ $(function() {
 			map : map
 		});
 
+/*		function placeMarker(pos) {
+			var marker = new google.maps.Marker({
+				position : pos,
+				title : "Езжай сюды!",
+				draggable : true,
+				map : map
+			});
+		}
+*/
+
+		
 	} // end initialize
+
+
 </script>
+
+
 
 </head>
 <body onload="initialize()">
