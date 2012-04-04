@@ -20,13 +20,8 @@ $(function() {
 		buttons: {
 			"OK": function() {
 				placeMarker(clickLocation);
-//				document.getElementsByTagName('map4')[0].contentWindow.placeMarker(clickLocation);
-//				document.getElementById("map4").contentwindow.placeMarker(clickLocation);
-
 				
 				$( this ).dialog( "close" );
-				//location.reload();
-				//window.location.reload(true);
 			}
 		}
 	});

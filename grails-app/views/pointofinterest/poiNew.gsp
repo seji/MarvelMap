@@ -36,7 +36,7 @@ fieldset {
 							document.getElementById('lng').value=clickLocation.lng();
 							document.getElementById('zoom').value=clickZoom.toString();
 							
-							$.post('/MarvelMap/PointOfInterest/save', $('form').serialize(), 
+							$.post('/MarvelMap/pointOfInterest/save', $('form').serialize(), 
 									function(data) {
 									
 										$('.contextMenu').html(data);

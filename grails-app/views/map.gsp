@@ -43,16 +43,10 @@ body {
 			startLocation = event.latLng;
 			//iw.open(map, marker2);
 			placeMarker(startLocation);
-			//setTimeout(placeMarker(startLocation), 5000);
 
 			//$(function() {alert('Message');});
 
-			$('12345').contextMenu('sdfdS', {
-				offsetX : 20,
-				offsetY : 20
 			});
-
-		});
 
 		function placeMarker(pos) {
 			var marker = new google.maps.Marker({
