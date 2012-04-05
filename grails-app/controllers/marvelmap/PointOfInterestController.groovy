@@ -161,4 +161,14 @@ class PointOfInterestController {
 			redirect(action: "show", id: params.id)
 		}
 	}
+	def getPOI(){
+		
+		def poi = PointOfInterest.collection.findOne()
+		
+		render "POI = ${poi.name}"
+		
+		}
 }
+
+
+

@@ -19,4 +19,6 @@ class PointOfInterest {
 		name();
 		description();
 	}
+	
+	
 }
