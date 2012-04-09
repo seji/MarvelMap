@@ -1,17 +1,5 @@
 <script type="text/javascript">
 $(function() {
-
-	function placeMarker(pos) {
-		var marker = new google.maps.Marker({
-			position : pos,
-			title : "Езжай сюды!",
-			draggable : true,
-			map : map
-		});
-	}
-
-
-	
 	$( "#dialog-message" ).dialog({
 		modal: true,
 		title : "Marvel Map",
@@ -19,7 +7,12 @@ $(function() {
 		resizable : false,
 		buttons: {
 			"OK": function() {
-				placeMarker(clickLocation);
+
+				$.get('/MarvelMap/pointOfInterest/getPOI',
+						function(data) {
+							$('.contextMenu').html(data);
+						}
+				);
 				
 				$( this ).dialog( "close" );
 			}

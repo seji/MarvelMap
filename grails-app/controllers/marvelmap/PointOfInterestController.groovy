@@ -1,8 +1,11 @@
 package marvelmap
 
+import grails.converters.JSON
 import org.springframework.dao.DataIntegrityViolationException
 
 class PointOfInterestController {
+	
+	def markerService
 
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -162,12 +165,17 @@ class PointOfInterestController {
 		}
 	}
 	def getPOI(){
-		
-		def poi = PointOfInterest.collection.findOne()
-		
-		render "POI = ${poi.name}"
-		
+		def poi = markerService.getPOI()
+		render poi as JSON
 		}
+	
+	def showPOI(){
+		def poi = markerService.getPOI()
+		println(poi) as JSON
+		[pointOfInterestInstance: new PointOfInterest(params)]
+		render(view: "showPOI", model:[lat:"${poi.lat}", lng:"${poi.lng}"])
+		}
+		
 }
 
 

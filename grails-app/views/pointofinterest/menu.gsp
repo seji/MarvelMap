@@ -39,6 +39,15 @@
 	});
 </script>
 
+<script type="text/javascript">
+	$("#showPOI").click(function() {
+			$.get('/MarvelMap/PointOfInterest/showPOI', function(data) {
+				$('.contextMenu').html(data);
+			});
+	});
+</script>
+
+
 
 <div id="test">
 	<ul>
@@ -49,6 +58,9 @@
 	</ul>
 	<ul>
 		<li id="showList">Show List</li>
+	</ul>
+	<ul>
+		<li id="showPOI">Show POI on map</li>
 	</ul>
 	
 </div>
