@@ -8,11 +8,9 @@ $(function() {
 		buttons: {
 			"OK": function() {
 
-				$.get('/MarvelMap/pointOfInterest/getPOI',
-						function(data) {
-							$('.contextMenu').html(data);
-						}
-				);
+				$.get('/MarvelMap/PointOfInterest/showPOI', function(data) {
+					$('.contextMenu').html(data);
+				});
 				
 				$( this ).dialog( "close" );
 			}

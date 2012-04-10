@@ -4,7 +4,7 @@ import grails.converters.JSON
 import org.springframework.dao.DataIntegrityViolationException
 
 class PointOfInterestController {
-	
+
 	def markerService
 
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -40,7 +40,7 @@ class PointOfInterestController {
 
 
 	def poiSaveConfirm() {
-		}
+	}
 
 	//////////////////////
 
@@ -68,7 +68,7 @@ class PointOfInterestController {
 		//redirect(action: "show", id: pointOfInterestInstance.id)
 		redirect(action: "poiSaveConfirm")
 		println(params);
-		
+
 	}
 
 	def show() {
@@ -164,18 +164,20 @@ class PointOfInterestController {
 			redirect(action: "show", id: params.id)
 		}
 	}
+
+
+
 	def getPOI(){
+
 		def poi = markerService.getPOI()
 		render poi as JSON
-		}
-	
+	}
+
 	def showPOI(){
-		def poi = markerService.getPOI()
-		println(poi) as JSON
 		[pointOfInterestInstance: new PointOfInterest(params)]
-		render(view: "showPOI", model:[lat:"${poi.lat}", lng:"${poi.lng}"])
-		}
-		
+		render(view: "showPOI", model:[pointOfInterestInstanceList: PointOfInterest.list(params)])
+	}
+
 }
 
 

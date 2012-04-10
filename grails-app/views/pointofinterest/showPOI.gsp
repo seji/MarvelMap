@@ -1,31 +1,23 @@
 
 
-
+ 
 <script type="text/javascript">	
 	
-	function placeMarker(pos) {
+	function placeMarker(pos,name,desc) {
 		var marker = new google.maps.Marker({
 			position : pos,
-			title : "Езжай сюды!",
+			title : name,
 			draggable : true,
 			map : map
 		});
 	}
-
-	//alert(${lat});
-	//alert(${lng});
-	
-	//p = new google.maps.LatLng(${lat},${lng});
-	//alert(p);
-	//placeMarker(p);
-
-	//placeMarker(clickLocation);
 </script>
 
-<g:each var="i" in="{(0..3)}" >
-	<script type="text/javascript">
-	alert(${lat});
-	
+<g:each in="${pointOfInterestInstanceList}" status="i"	var="pointOfInterestInstance">
+	<script type="text/javascript">	
+		p = new google.maps.LatLng(${fieldValue(bean: pointOfInterestInstance, field: "lat")},${fieldValue(bean: pointOfInterestInstance, field: "lng")});
+		n = "${fieldValue(bean: pointOfInterestInstance, field: "name")}"
+		d = "${fieldValue(bean: pointOfInterestInstance, field: "description")}"
+		placeMarker(p, n, d);
 	</script>
-	
 </g:each>

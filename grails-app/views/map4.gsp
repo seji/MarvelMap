@@ -71,10 +71,15 @@ $(function() {
 	function initialize() {
 		var myOptions = {
 			center : new google.maps.LatLng(10, -10),
-			zoom : 15,
+			zoom : 11,
 			mapTypeId : google.maps.MapTypeId.ROADMAP,
 
 		};
+
+		$.get('/MarvelMap/PointOfInterest/showPOI', function(data) {
+			$('.contextMenu').html(data);
+		});
+		
 		/*var*/ map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 		google.maps.event.addListener(map, 'rightclick', function(event) {
 			clickLocation = event.latLng;
