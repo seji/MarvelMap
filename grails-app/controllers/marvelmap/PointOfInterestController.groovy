@@ -5,7 +5,7 @@ import org.springframework.dao.DataIntegrityViolationException
 
 class PointOfInterestController {
 
-	def markerService
+	//def markerService
 
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -167,12 +167,12 @@ class PointOfInterestController {
 
 
 
-	def getPOI(){
+/*	def getPOI(){
 
 		def poi = markerService.getPOI()
 		render poi as JSON
 	}
-
+*/
 	def showPOI(){
 		[pointOfInterestInstance: new PointOfInterest(params)]
 		render(view: "showPOI", model:[pointOfInterestInstanceList: PointOfInterest.list(params)])

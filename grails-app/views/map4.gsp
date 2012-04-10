@@ -86,7 +86,7 @@ $(function() {
 			clickZoom = map.getZoom();
 //			placeMarker(clickLocation);
 
-			$.get('/MarvelMap/pointOfInterest/menu',
+			$.get('/MarvelMap/PointOfInterest/menu',
 					function(data) {
 						$('.contextMenu').html(data);
 					});
