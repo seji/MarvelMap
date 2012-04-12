@@ -74,6 +74,7 @@
 			
 			// Hide context menu on several events
 			$.each('click dragstart zoom_changed maptypeid_changed center_changed'.split(' '), function(i,name){
+				
 				g.event.addListener(self.theMap, name, function(){ self.theMenu.hide(); });
 			});
 		}

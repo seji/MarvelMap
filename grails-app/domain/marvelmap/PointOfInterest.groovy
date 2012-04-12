@@ -13,12 +13,20 @@ class PointOfInterest {
 	
 	String toString(){"${name}"}
 	
+
 	
+		
 	
 	static constraints = {
 		name();
 		description();
 	}
+	
+	def getPOI(){
+		String p = "privet";
+		
+		return p;
+		}
 	
 	
 }

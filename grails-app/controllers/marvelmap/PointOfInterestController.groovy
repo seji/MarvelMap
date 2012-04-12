@@ -173,9 +173,21 @@ class PointOfInterestController {
 		render poi as JSON
 	}
 */
-	def showPOI(){
+	def showAllPOI(){
 		[pointOfInterestInstance: new PointOfInterest(params)]
-		render(view: "showPOI", model:[pointOfInterestInstanceList: PointOfInterest.list(params)])
+		render(view: "showAllPOI", model:[pointOfInterestInstanceList: PointOfInterest.list(params)])
+	}
+	
+	def removeAllPOI(){
+		println("Remove ALL POI");
+	}
+	
+	
+	def showPOIinBounds(){
+
+		println(params);
+		
+		
 	}
 
 }

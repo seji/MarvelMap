@@ -1,49 +1,92 @@
 <style>
 /*	#test .ui-selecting { background: #FECA40; }*/
 /*	#test .ui-selected { background: #F39814; color: white; }*/
-	#test ul:hover { background: #FECA40; color: white;} 
-	#test {list-style-type: none; margin: 0; padding: 0; width: 100%;}
-	#test li {margin: 3px; padding: 0.4em; font-size: 1.2em; height: 18px; }
-	
+#test ul:hover {
+	background: #FECA40;
+	color: white;
+}
+
+#test {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+#test li {
+	margin: 3px;
+	padding: 0.4em;
+	font-size: 1.2em;
+	height: 18px;
+}
+
 /*	label,input {display: block;}
 	input.text {margin-bottom: 12px;width: 95%;padding: .4em;}
 	fieldset {padding: 0;border: 0;margin-top: 25px;}
 */
-</style>	
-	<script>
+</style>
+<script>
 	$(function() {
-		$( "#test" ).selectable();
+		$("#test").selectable();
 	});
-	</script>
+</script>
 
 <script type="text/javascript">
 	$("#addPOI").click(function() {
-			$.get('/MarvelMap/PointOfInterest/poiNew', function(data) {
-				$('.contextMenu').html(data);
-			});
+		$.get('/MarvelMap/PointOfInterest/poiNew', function(data) {
+			$('.contextMenu').html(data);
+		});
 	});
 </script>
 
 <script type="text/javascript">
 	$("#lookAround").click(function() {
-			$.get('/MarvelMap/PointOfInterest/create', function(data) {
-				$('.contextMenu').html(data);
-			});
+		$.get('/MarvelMap/PointOfInterest/create', function(data) {
+			$('.contextMenu').html(data);
+		});
 	});
 </script>
 <script type="text/javascript">
 	$("#showList").click(function() {
-			$.get('/MarvelMap/PointOfInterest/list', function(data) {
-				$('.contextMenu').html(data);
-			});
+		$.get('/MarvelMap/PointOfInterest/list', function(data) {
+			$('.contextMenu').html(data);
+		});
 	});
 </script>
 
 <script type="text/javascript">
-	$("#showPOI").click(function() {
-			$.get('/MarvelMap/PointOfInterest/showPOI', function(data) {
-				$('.contextMenu').html(data);
-			});
+	$("#showAllPOI").click(function() {
+		$.get('/MarvelMap/PointOfInterest/showAllPOI', function(data) {
+			$('.contextMenu').html(data);
+		});
+	});
+</script>
+
+<script type="text/javascript">
+	$("#removeAllPOI").click(function() {
+		$.get('/MarvelMap/PointOfInterest/removeAllPOI', function(data) {
+			$('.contextMenu').html(data);
+		});
+	});
+</script>
+
+
+<script type="text/javascript">
+	$("#showPOIinBounds").click(function() {
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		$.post('/MarvelMap/PointOfInterest/showPOIinBounds', {
+			NElat : map.getBounds().getNorthEast().lat().toString(),
+			NElng : map.getBounds().getNorthEast().lng().toString(),
+			SWlat : map.getBounds().getSouthWest().lat().toString(),
+			SWlng : map.getBounds().getSouthWest().lng().toString()
+		}, function(data) {
+			$('.contextMenu').html(data);
+
+		});
+
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////				
+
 	});
 </script>
 
@@ -60,7 +103,12 @@
 		<li id="showList">Show List</li>
 	</ul>
 	<ul>
-		<li id="showPOI">Show POI on map</li>
+		<li id="showAllPOI">Show ALL POI on the map</li>
 	</ul>
-	
+	<ul>
+		<li id="removeAllPOI">Remove ALL POI from the map</li>
+	</ul>
+	<ul>
+		<li id="showPOIinBounds">Show POI that fit the current screen</li>
+	</ul>
 </div>

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="initial-scale=1.0, user-scalable=no"	charset='utf-8' />
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no"
+	charset='utf-8' />
 <META HTTP-EQUIV="EXPIRES" CONTENT="-1">
 <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
 <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
@@ -76,20 +77,37 @@ $(function() {
 
 		};
 
-		$.get('/MarvelMap/PointOfInterest/showPOI', function(data) {
+/*		$.get('/MarvelMap/PointOfInterest/showPOI', function(data) {
 			$('.contextMenu').html(data);
 		});
-		
-		/*var*/ map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+*/
+		map = new google.maps.Map(
+				document.getElementById("map_canvas"), myOptions);
 		google.maps.event.addListener(map, 'rightclick', function(event) {
 			clickLocation = event.latLng;
 			clickZoom = map.getZoom();
-//			placeMarker(clickLocation);
+			//			placeMarker(clickLocation);
 
-			$.get('/MarvelMap/PointOfInterest/menu',
-					function(data) {
-						$('.contextMenu').html(data);
-					});
+			$.get('/MarvelMap/PointOfInterest/menu', function(data) {
+				$('.contextMenu').html(data);
+			});
+		});
+
+		// do smth on several events
+		$.each('click dragstart zoom_changed maptypeid_changed center_changed'.split(' '), 
+				function(i, name) {
+					google.maps.event.addListener(map, name, function() {
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+						
+				});
 		});
 
 		/*
@@ -99,27 +117,24 @@ $(function() {
 			map : map
 		});
 
-/*		function placeMarker(pos) {
-			var marker = new google.maps.Marker({
-				position : pos,
-				title : "Езжай сюды!",
-				draggable : true,
-				map : map
-			});
-		}
-*/
+		/*		function placeMarker(pos) {
+		 var marker = new google.maps.Marker({
+		 position : pos,
+		 title : "Езжай сюды!",
+		 draggable : true,
+		 map : map
+		 });
+		 }
+		 */
 
-		
 	} // end initialize
-
-
 </script>
 
 
 
 </head>
 <body onload="initialize()">
-<!--<div id="dialog-message">
+	<!--<div id="dialog-message">
 		<p>Welcome screen</p>
 	</div>-->
 	<div id="map_canvas" style="width: 100%; height: 100%"></div>
