@@ -5,7 +5,7 @@ import org.springframework.dao.DataIntegrityViolationException
 
 class PointOfInterestController {
 
-	def markerService
+
 
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -182,13 +182,21 @@ class PointOfInterestController {
 		println("Remove ALL POI");
 	}
 	
-	
+	//def markerService = new MarkerService();
 	def showPOIinBounds(){
 		
-		//markerService.getPOIWithinBounds(params.NElat, params.NElng, params.SWlat, params.SWlng);
-		markerService.getPOIWithinBounds(params);
+		[pointOfInterestInstance: new PointOfInterest(params)]
+		def threePOI = PointOfInterest.findAllByRatingIsNotNull([sort:"rating", order:"desc", max:2])
+		
+		println(threePOI)
+		//println(threePOItoStrMarker())
+
+		
+		
+				//markerService.getPOIWithinBounds(params.NElat, params.NElng, params.SWlat, params.SWlng);
+		//markerService.getPOIWithinBounds(params);
 		//println(markerService.getPOIWithinBounds(params));
-		println(params);
+		//println(params);
 		//println(params.NElat + params.NElng + params.SWlat + params.SWlng);
 		
 		

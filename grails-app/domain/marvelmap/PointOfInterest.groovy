@@ -1,5 +1,7 @@
 package marvelmap
 
+import grails.converters.JSON
+
 class PointOfInterest {
 	//	String id
 	String name
@@ -11,22 +13,14 @@ class PointOfInterest {
 
  //	static mapWith="mongo"
 	
-	String toString(){"${name}"}
+	//String toString(){"${name}"}
 	
+	public String toString() {
+		 return "[name:" + name + ", description:" + description+ ", lat:" + lat + ", lng:" + lng + ", rating:" + rating+"]";
 
-	
-		
+		 	}
 	
 	static constraints = {
 		name();
 		description();
-	}
-	
-	def getPOI(){
-		String p = "privet";
-		
-		return p;
-		}
-	
-	
-}
+	}}
