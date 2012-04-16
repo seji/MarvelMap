@@ -3,10 +3,11 @@
  
 <script type="text/javascript">	
 	
-	function placeMarker(pos,name,desc) {
+	function placeMarker(id, pos,name,desc) {
 		var marker = new google.maps.Marker({
+			id : id,
 			position : pos,
-			title : name,
+			title : id + name,
 			draggable : true,
 			map : map
 		});
@@ -18,6 +19,7 @@
 		p = new google.maps.LatLng(${fieldValue(bean: pointOfInterestInstance, field: "lat")},${fieldValue(bean: pointOfInterestInstance, field: "lng")});
 		n = "${fieldValue(bean: pointOfInterestInstance, field: "name")}"
 		d = "${fieldValue(bean: pointOfInterestInstance, field: "description")}"
-		placeMarker(p, n, d);
+		id = "${fieldValue(bean: pointOfInterestInstance, field: "id")}"
+		placeMarker(id, p, n, d);
 	</script>
 </g:each>

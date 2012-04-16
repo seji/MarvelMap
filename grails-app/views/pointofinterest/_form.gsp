@@ -23,7 +23,7 @@
 		<g:message code="pointOfInterest.lat.label" default="Lat" />
 		
 	</label>
-	<g:textField name="lat" value="${pointOfInterestInstance?.lat}" />
+	<g:field type="number" name="lat" value="${fieldValue(bean: pointOfInterestInstance, field: 'lat')}" />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: pointOfInterestInstance, field: 'lng', 'error')} ">
@@ -31,7 +31,7 @@
 		<g:message code="pointOfInterest.lng.label" default="Lng" />
 		
 	</label>
-	<g:textField name="lng" value="${pointOfInterestInstance?.lng}" />
+	<g:field type="number" name="lng" value="${fieldValue(bean: pointOfInterestInstance, field: 'lng')}" />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: pointOfInterestInstance, field: 'name', 'error')} ">

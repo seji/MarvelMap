@@ -72,7 +72,7 @@ $(function() {
 	function initialize() {
 		var myOptions = {
 			center : new google.maps.LatLng(10, -10),
-			zoom : 15,
+			zoom : 9,
 			mapTypeId : google.maps.MapTypeId.ROADMAP,
 
 		};
@@ -86,7 +86,7 @@ $(function() {
 		google.maps.event.addListener(map, 'rightclick', function(event) {
 			clickLocation = event.latLng;
 			clickZoom = map.getZoom();
-			//			placeMarker(clickLocation);
+						//placeMarker(clickLocation);
 
 			$.get('/MarvelMap/PointOfInterest/menu', function(data) {
 				$('.contextMenu').html(data);

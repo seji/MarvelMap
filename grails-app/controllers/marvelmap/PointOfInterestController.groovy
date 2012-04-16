@@ -174,7 +174,7 @@ class PointOfInterestController {
 	}
 */
 	def showAllPOI(){
-		[pointOfInterestInstance: new PointOfInterest(params)]
+		//[pointOfInterestInstance: new PointOfInterest(params)]
 		render(view: "showAllPOI", model:[pointOfInterestInstanceList: PointOfInterest.list(params)])
 	}
 	
@@ -184,20 +184,23 @@ class PointOfInterestController {
 	
 	//def markerService = new MarkerService();
 	def showPOIinBounds(){
-		
+		println(params)
+		println(params.SWlat +"  "+params.NElat)
+		//def BigDecimal a = params.SWlat;
 		[pointOfInterestInstance: new PointOfInterest(params)]
-		def threePOI = PointOfInterest.findAllByRatingIsNotNull([sort:"rating", order:"desc", max:2])
+		//def threePOI = PointOfInterest.findAllByRatingIsNotNull([sort:"rating", order:"desc", max:3])
+		def threePOI = PointOfInterest.withCriteria{
+			//between('lat', params.SWlat, params.NElat)
+			between('lat', 0.00, 10.6)
+			//between('lng', params.SWlng, params.NElng)
+			maxResults(3)
+			order("rating", "desc")
+			};
 		
+		
+		println(threePOI.lat)
 		println(threePOI)
-		//println(threePOItoStrMarker())
-
-		
-		
-				//markerService.getPOIWithinBounds(params.NElat, params.NElng, params.SWlat, params.SWlng);
-		//markerService.getPOIWithinBounds(params);
-		//println(markerService.getPOIWithinBounds(params));
-		//println(params);
-		//println(params.NElat + params.NElng + params.SWlat + params.SWlng);
+		render(view: "showPOIinBounds", model:[threePOIlist: threePOI])
 		
 		
 	}

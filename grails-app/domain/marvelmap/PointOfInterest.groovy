@@ -7,20 +7,24 @@ class PointOfInterest {
 	String name
 	String description
 	Date dateAdded = new Date();	
-	String lat
-	String lng
-	Long rating=1;
+	BigDecimal lat
+	BigDecimal lng
+	Integer rating = new Random().nextInt(100);
+
 
  //	static mapWith="mongo"
 	
 	//String toString(){"${name}"}
 	
 	public String toString() {
-		 return "[name:" + name + ", description:" + description+ ", lat:" + lat + ", lng:" + lng + ", rating:" + rating+"]";
+		 return "[id:"+ id + ", name:" + name + ", description:" + description+ ", lat:" + lat + ", lng:" + lng + ", rating:" + rating+"]";
 
 		 	}
 	
 	static constraints = {
-		name();
-		description();
+		lat( scale : 16)
+		lng( scale : 16)
+		name()
+		description()
+ 
 	}}
