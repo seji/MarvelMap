@@ -184,15 +184,18 @@ class PointOfInterestController {
 	
 	//def markerService = new MarkerService();
 	def showPOIinBounds(){
-		println(params)
 		println(params.SWlat +"  "+params.NElat)
+		println(params.SWlng +"  "+params.NElng)
 		//def BigDecimal a = params.SWlat;
 		[pointOfInterestInstance: new PointOfInterest(params)]
 		//def threePOI = PointOfInterest.findAllByRatingIsNotNull([sort:"rating", order:"desc", max:3])
-		def threePOI = PointOfInterest.withCriteria{
-			//between('lat', params.SWlat, params.NElat)
-			between('lat', 0.00, 10.6)
-			//between('lng', params.SWlng, params.NElng)
+		def c = PointOfInterest.createCriteria()
+		def threePOI = c.list {
+			
+			gt("lat",1.0)
+			//between('lat', params.SWlat, params.NElat) and {between('lng', params.SWlng, params.NElng)}
+			
+			//between('lat', 5.00000, 10.6)
 			maxResults(3)
 			order("rating", "desc")
 			};
