@@ -77,16 +77,18 @@ $(function() {
 
 		};
 
-/*		$.get('/MarvelMap/PointOfInterest/showPOI', function(data) {
+/*		$.get('/MarvelMap/PointOfInterest/showAllPOI', function(data) {
 			$('.contextMenu').html(data);
 		});
 */
+
 		map = new google.maps.Map(
 				document.getElementById("map_canvas"), myOptions);
+
+
 		google.maps.event.addListener(map, 'rightclick', function(event) {
 			clickLocation = event.latLng;
 			clickZoom = map.getZoom();
-						//placeMarker(clickLocation);
 
 			$.get('/MarvelMap/PointOfInterest/menu', function(data) {
 				$('.contextMenu').html(data);
@@ -102,9 +104,6 @@ $(function() {
 
 
 
-
-
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 						
 				});
@@ -116,21 +115,8 @@ $(function() {
 		var context_menu = new contextMenu({
 			map : map
 		});
-
-		/*		function placeMarker(pos) {
-		 var marker = new google.maps.Marker({
-		 position : pos,
-		 title : "Езжай сюды!",
-		 draggable : true,
-		 map : map
-		 });
-		 }
-		 */
-
-	} // end initialize
+	}// end initialize
 </script>
-
-
 
 </head>
 <body onload="initialize()">
@@ -139,6 +125,6 @@ $(function() {
 	</div>-->
 	<div id="map_canvas" style="width: 100%; height: 100%"></div>
 
-
 </body>
+
 </html>

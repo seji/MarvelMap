@@ -182,20 +182,28 @@ class PointOfInterestController {
 		println("Remove ALL POI");
 	}
 	
+	def showInfoWindow(){
+		println("showInfoWindow");
+	}
+	
 	//def markerService = new MarkerService();
 	def showPOIinBounds(){
+		println(params)
 		println(params.SWlat +"  "+params.NElat)
 		println(params.SWlng +"  "+params.NElng)
-		//def BigDecimal a = params.SWlat;
-		[pointOfInterestInstance: new PointOfInterest(params)]
+		
+		def BigDecimal _SWlat = params.SWlat.toBigDecimal();
+		def BigDecimal _NElat = params.NElat.toBigDecimal();
+		def BigDecimal _SWlng = params.SWlng.toBigDecimal();
+		def BigDecimal _NElng = params.NElng.toBigDecimal();
+		
+		//[pointOfInterestInstance: new PointOfInterest(params)]
 		//def threePOI = PointOfInterest.findAllByRatingIsNotNull([sort:"rating", order:"desc", max:3])
 		def c = PointOfInterest.createCriteria()
 		def threePOI = c.list {
-			
-			gt("lat",1.0)
+			//gt('lat',_SWlat)
+			//between('lat', params.SWlat, params.NElat)
 			//between('lat', params.SWlat, params.NElat) and {between('lng', params.SWlng, params.NElng)}
-			
-			//between('lat', 5.00000, 10.6)
 			maxResults(3)
 			order("rating", "desc")
 			};
