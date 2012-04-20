@@ -4,9 +4,18 @@
 
 	
 var infowindow
+var markersArray = [];
+
+function clearOverlays() {
+	  if (markersArray) {
+	    for (var i = 0; i < markersArray.length; i++ ) {
+	      markersArray[i].setMap(null);
+	    }
+	  }
+	}
 
 function placeMarker(id,pos,name,desc,rating) {
-	var marker = new google.maps.Marker({
+	marker = new google.maps.Marker({
 		id : id,
 		position : pos,
 		//title : "id: "+ id +", name: "+ name +", rating: "+ rating ,
@@ -15,6 +24,8 @@ function placeMarker(id,pos,name,desc,rating) {
 		map : map
 	});
 
+	markersArray.push(marker);
+	
 	google.maps.event.addListener(marker, 'mouseover', function(event) {
 		infowindow = new google.maps.InfoWindow({
 			//disableAutoPan : true,
@@ -42,7 +53,13 @@ function placeMarker(id,pos,name,desc,rating) {
 		infowindow.open(map, marker);		
 	  });
 }
+
 </script>
+
+<script type="text/javascript">
+clearOverlays();
+</script>
+
 <g:each in="${threePOIlist}" status="i" var="pointOfInterestInstance">
 	<script type="text/javascript">	
 		p = new google.maps.LatLng(${fieldValue(bean: pointOfInterestInstance, field: "lat")},${fieldValue(bean: pointOfInterestInstance, field: "lng")});
@@ -51,6 +68,6 @@ function placeMarker(id,pos,name,desc,rating) {
 		id = "${fieldValue(bean: pointOfInterestInstance, field: "id")}"
 		r = "${fieldValue(bean: pointOfInterestInstance, field: "rating")}"		
 		placeMarker(id, p, n, d, r);
-		
+		alert(markersArray.toString())		
 	</script>
 </g:each>

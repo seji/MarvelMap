@@ -43,9 +43,7 @@ body {
 	href="${resource(dir: 'css/ui-lightness', file: 'jquery-ui-1.8.18.custom.css')}"
 	type="text/css">
 
-<!--  -->
-<script type="text/javascript"
-	src="${resource(dir: 'js', file: 'context_menu.js')}"></script>
+<script type="text/javascript"src="${resource(dir: 'js', file: 'context_menu.js')}"></script>
 
 <!--<script type="text/javascript">
 $(function() {
@@ -96,18 +94,33 @@ $(function() {
 		});
 
 		// do smth on several events
-		$.each('click dragstart zoom_changed maptypeid_changed center_changed'.split(' '), 
+//		$.each('open dragend zoom_changed maptypeid_changed '.split(' '), 
+		$.each('open dragend zoom_changed'.split(' '),		
 				function(i, name) {
+					
 					google.maps.event.addListener(map, name, function() {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	setTimeout(function () { 
+			
+	$.post('/MarvelMap/PointOfInterest/showPOIinBounds', {
+			NElat : map.getBounds().getNorthEast().lat(),
+			NElng : map.getBounds().getNorthEast().lng(),
+			SWlat : map.getBounds().getSouthWest().lat(),
+			SWlng : map.getBounds().getSouthWest().lng()
+		}, function(data) {
+			$('.contextMenu').html(data);
+		});
 
-
-
+	 }, 1000);
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 						
 				});
-		});
+
+		}
+
+
+		);
 
 		/*
 		 * Create the menu and attached it to the map
@@ -115,15 +128,25 @@ $(function() {
 		var context_menu = new contextMenu({
 			map : map
 		});
+
+		
+		
 	}// end initialize
 </script>
 
 </head>
 <body onload="initialize()">
+
+
 	<!--<div id="dialog-message">
 		<p>Welcome screen</p>
 	</div>-->
-	<div id="map_canvas" style="width: 100%; height: 100%"></div>
+	<div id="map_canvas" style="width: 100%; height: 100%">
+
+		
+	</div>
+
+
 
 </body>
 

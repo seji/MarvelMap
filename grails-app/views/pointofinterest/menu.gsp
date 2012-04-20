@@ -73,23 +73,16 @@
 
 <script type="text/javascript">
 	$("#showPOIinBounds").click(function() {
-		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 		$.post('/MarvelMap/PointOfInterest/showPOIinBounds', {
 			NElat : map.getBounds().getNorthEast().lat(),
 			NElng : map.getBounds().getNorthEast().lng(),
 			SWlat : map.getBounds().getSouthWest().lat(),
 			SWlng : map.getBounds().getSouthWest().lng()
-			
 		}, function(data) {
 			$('.contextMenu').html(data);
 		});
-
-		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////				
-
 	});
 </script>
-
 
 
 <div id="test">
