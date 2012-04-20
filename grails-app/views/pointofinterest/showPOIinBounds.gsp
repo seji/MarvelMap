@@ -9,33 +9,37 @@ function placeMarker(id,pos,name,desc,rating) {
 	var marker = new google.maps.Marker({
 		id : id,
 		position : pos,
-		title : "id: "+ id +", name: "+ name +", rating: "+ rating ,
+		//title : "id: "+ id +", name: "+ name +", rating: "+ rating ,
+		title : name,
 		draggable : true,
 		map : map
 	});
 
 	google.maps.event.addListener(marker, 'mouseover', function(event) {
 		infowindow = new google.maps.InfoWindow({
-			content:  'Hello world'
+			//disableAutoPan : true,
+			content:  "id: "+ id +", name: "+ name +", rating: "+ rating
 			});
-	    	//infowindow.content = $.get('/MarvelMap/PointOfInterest/showInfoWindow');
-			infowindow.open(map, marker);
-
-
-			//map.setZoom(8);
-	    //map.setCenter(marker.getPosition());
-        //this.setIcon("http://xxx.de/test6/system/css/images/pfote_clean.png");
          });
 
 	google.maps.event.addListener(marker, 'mouseout', function(event) {
 		//alert('mouseout');
-		infowindow.close();
+		//infowindow.close();
+		//setTimeout(function () { this.infowindow.close(); }, 1000);
          });
     
 
 	google.maps.event.addListener(marker, 'click', function() {
-		
-               
+		infowindow.close();
+
+			  $.ajax({
+			    url: '/MarvelMap/PointOfInterest/showInfoWindow',
+			    success: function(data){
+			      infowindow.setContent(data);
+			    }
+			  });
+			
+		infowindow.open(map, marker);		
 	  });
 }
 </script>

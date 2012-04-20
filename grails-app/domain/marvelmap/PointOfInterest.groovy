@@ -7,8 +7,8 @@ class PointOfInterest {
 	String name
 	String description
 	Date dateAdded = new Date();	
-	BigDecimal lat
-	BigDecimal lng
+	Double lat
+	Double lng
 	Integer rating = new Random().nextInt(100);
 
 

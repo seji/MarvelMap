@@ -188,28 +188,27 @@ class PointOfInterestController {
 	
 	//def markerService = new MarkerService();
 	def showPOIinBounds(){
-		println(params)
-		println(params.SWlat +"  "+params.NElat)
-		println(params.SWlng +"  "+params.NElng)
+
+//		println(params.SWlat +"  "+params.NElat)
+//		println(params.SWlng +"  "+params.NElng)
 		
-		def BigDecimal _SWlat = params.SWlat.toBigDecimal();
-		def BigDecimal _NElat = params.NElat.toBigDecimal();
-		def BigDecimal _SWlng = params.SWlng.toBigDecimal();
-		def BigDecimal _NElng = params.NElng.toBigDecimal();
+		Double dSWlat = params.SWlat.toDouble();
+		Double dNElat = params.NElat.toDouble();
+		Double dSWlng = params.SWlng.toDouble();
+		Double dNElng = params.NElng.toDouble();
 		
-		//[pointOfInterestInstance: new PointOfInterest(params)]
-		//def threePOI = PointOfInterest.findAllByRatingIsNotNull([sort:"rating", order:"desc", max:3])
 		def c = PointOfInterest.createCriteria()
 		def threePOI = c.list {
-			//gt('lat',_SWlat)
-			//between('lat', params.SWlat, params.NElat)
-			//between('lat', params.SWlat, params.NElat) and {between('lng', params.SWlng, params.NElng)}
+			between('lat', dSWlat, dNElat) 
+			and {
+				between('lng', dSWlng, dNElng)
+				}
 			maxResults(3)
 			order("rating", "desc")
 			};
 		
 		
-		println(threePOI.lat)
+//		println(threePOI.lat)
 		println(threePOI)
 		render(view: "showPOIinBounds", model:[threePOIlist: threePOI])
 		
