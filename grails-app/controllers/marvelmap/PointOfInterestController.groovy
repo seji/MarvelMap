@@ -5,15 +5,11 @@ import org.springframework.dao.DataIntegrityViolationException
 
 class PointOfInterestController {
 
-
-
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
 	def index() {
 		redirect(action: "list", params: params)
 	}
-
-	///////////////////////
 
 	def poiDescription(){
 	}
@@ -38,13 +34,8 @@ class PointOfInterestController {
 		println(params);
 	}
 
-
 	def poiSaveConfirm() {
 	}
-
-	//////////////////////
-
-
 
 	def list() {
 		params.max = Math.min(params.max ? params.int('max') : 10, 100)
@@ -165,56 +156,44 @@ class PointOfInterestController {
 		}
 	}
 
-
-
-/*	def getPOI(){
-
-		def poi = markerService.getPOI()
-		render poi as JSON
-	}
-*/
+	/*	def getPOI(){
+	 def poi = markerService.getPOI()
+	 render poi as JSON
+	 }
+	 */
 	def showAllPOI(){
 		//[pointOfInterestInstance: new PointOfInterest(params)]
 		render(view: "showAllPOI", model:[pointOfInterestInstanceList: PointOfInterest.list(params)])
 	}
-	
+
 	def removeAllPOI(){
 		println("Remove ALL POI");
 	}
-	
+
 	def showInfoWindow(){
 		println("showInfoWindow");
 	}
-	
+
 	//def markerService = new MarkerService();
 	def showPOIinBounds(){
-
-//		println(params.SWlat +"  "+params.NElat)
-//		println(params.SWlng +"  "+params.NElng)
-		
+		//convert string representation of bounds latlng back to Double
 		Double dSWlat = params.SWlat.toDouble();
 		Double dNElat = params.NElat.toDouble();
 		Double dSWlng = params.SWlng.toDouble();
 		Double dNElng = params.NElng.toDouble();
-		
+
 		def c = PointOfInterest.createCriteria()
 		def threePOI = c.list {
-			between('lat', dSWlat, dNElat) 
+			between('lat', dSWlat, dNElat)
 			and {
 				between('lng', dSWlng, dNElng)
-				}
+			}
 			maxResults(3)
 			order("rating", "desc")
-			};
-		
-		
-//		println(threePOI.lat)
+		};
 		println(threePOI)
 		render(view: "showPOIinBounds", model:[threePOIlist: threePOI])
-		
-		
 	}
-
 }
 
 

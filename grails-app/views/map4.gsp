@@ -43,7 +43,8 @@ body {
 	href="${resource(dir: 'css/ui-lightness', file: 'jquery-ui-1.8.18.custom.css')}"
 	type="text/css">
 
-<script type="text/javascript"src="${resource(dir: 'js', file: 'context_menu.js')}"></script>
+<script type="text/javascript"
+	src="${resource(dir: 'js', file: 'context_menu.js')}"></script>
 
 <!--<script type="text/javascript">
 $(function() {
@@ -70,19 +71,13 @@ $(function() {
 	function initialize() {
 		var myOptions = {
 			center : new google.maps.LatLng(10, -10),
-			zoom : 9,
+			zoom : 10,
 			mapTypeId : google.maps.MapTypeId.ROADMAP,
-
 		};
 
-/*		$.get('/MarvelMap/PointOfInterest/showAllPOI', function(data) {
-			$('.contextMenu').html(data);
-		});
-*/
-
-		map = new google.maps.Map(
-				document.getElementById("map_canvas"), myOptions);
-
+		//create map
+		map = new google.maps.Map(document.getElementById("map_canvas"),
+				myOptions);
 
 		google.maps.event.addListener(map, 'rightclick', function(event) {
 			clickLocation = event.latLng;
@@ -93,34 +88,36 @@ $(function() {
 			});
 		});
 
-		// do smth on several events
-//		$.each('open dragend zoom_changed maptypeid_changed '.split(' '), 
-		$.each('open dragend zoom_changed'.split(' '),		
-				function(i, name) {
-					
-					google.maps.event.addListener(map, name, function() {
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	setTimeout(function () { 
-			
-	$.post('/MarvelMap/PointOfInterest/showPOIinBounds', {
-			NElat : map.getBounds().getNorthEast().lat(),
-			NElng : map.getBounds().getNorthEast().lng(),
-			SWlat : map.getBounds().getSouthWest().lat(),
-			SWlng : map.getBounds().getSouthWest().lng()
-		}, function(data) {
-			$('.contextMenu').html(data);
-		});
-
-	 }, 1000);
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-						
-				});
-
+		markersArray = [];
+		function clearOverlays() {
+			if (markersArray) {
+				for ( var i = 0; i < markersArray.length; i++) {
+					markersArray[i].setMap(null);
+				}
+			}
 		}
 
-
-		);
+		$.each('open dragend zoom_changed'.split(' '), function(i, name) {
+			google.maps.event.addListener(map, name, function() {
+				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+				setTimeout(function() {
+					//clear existing markers from the map
+					clearOverlays();
+					// clear markers array
+					markersArray = [];
+					//show all POIs within current bounds
+					$.post('/MarvelMap/PointOfInterest/showPOIinBounds', {
+						NElat : map.getBounds().getNorthEast().lat(),
+						NElng : map.getBounds().getNorthEast().lng(),
+						SWlat : map.getBounds().getSouthWest().lat(),
+						SWlng : map.getBounds().getSouthWest().lng()
+					}, function(data) {
+						$('.contextMenu').html(data);
+					});
+				}, 500);
+				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			});
+		});
 
 		/*
 		 * Create the menu and attached it to the map
@@ -129,8 +126,6 @@ $(function() {
 			map : map
 		});
 
-		
-		
 	}// end initialize
 </script>
 
@@ -141,10 +136,7 @@ $(function() {
 	<!--<div id="dialog-message">
 		<p>Welcome screen</p>
 	</div>-->
-	<div id="map_canvas" style="width: 100%; height: 100%">
-
-		
-	</div>
+	<div id="map_canvas" style="width: 100%; height: 100%"></div>
 
 
 
