@@ -79,11 +79,13 @@ $(function() {
 		map = new google.maps.Map(document.getElementById("map_canvas"),
 				myOptions);
 
+		//initialize infowindow
 		infowindow = new google.maps.InfoWindow({
 			//disableAutoPan : true,
 			//content:  "id: "+ id +", name: "+ name +", rating: "+ rating
-			content:  "marker"
-			});
+			//content : "marker"
+		});
+
 		google.maps.event.addListener(map, 'rightclick', function(event) {
 			clickLocation = event.latLng;
 			clickZoom = map.getZoom();
@@ -92,11 +94,13 @@ $(function() {
 				$('.contextMenu').html(data);
 			});
 		});
-/*		 google.maps.event.addListener(infowindow, 'domready', function() {
-			 $("#info_window").dialog();                   
-		    });
-*/		    
+
+		/*google.maps.event.addListener(infowindow, 'domready', function() {
+		 $("#info_window").dialog();                   
+		 });
+		 */
 		markersArray = [];
+
 		function clearOverlays() {
 			if (markersArray) {
 				for ( var i = 0; i < markersArray.length; i++) {
@@ -107,7 +111,6 @@ $(function() {
 
 		$.each('open dragend zoom_changed'.split(' '), function(i, name) {
 			google.maps.event.addListener(map, name, function() {
-				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 				setTimeout(function() {
 					//clear existing markers from the map
 					clearOverlays();
@@ -123,14 +126,13 @@ $(function() {
 						$('.contextMenu').html(data);
 					});
 				}, 500);
-				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			});
 		});
 
 		/*
 		 * Create the menu and attached it to the map
 		 */
-		var context_menu = new contextMenu({
+		context_menu = new contextMenu({
 			map : map
 		});
 

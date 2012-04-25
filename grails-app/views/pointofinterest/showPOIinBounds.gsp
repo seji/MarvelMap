@@ -2,19 +2,12 @@
 
 <script type="text/javascript">	
 
-/*	
-var infowindow = new google.maps.InfoWindow({
-	//disableAutoPan : true,
-	//content:  "id: "+ id +", name: "+ name +", rating: "+ rating
-	content:  "marker"
-	});
-*/
 function placeMarker(id,pos,name,desc,rating) {
 	var marker = new google.maps.Marker({
 		id : id,
 		position : pos,
 		title : "id: "+ id +", name: "+ name +", rating: "+ rating ,
-		title : name,
+		//title : name,
 		draggable : true,
 		map : map
 	});
@@ -22,31 +15,26 @@ function placeMarker(id,pos,name,desc,rating) {
 	markersArray.push(marker);
 	
 	google.maps.event.addListener(marker, 'mouseover', function(event) {
-		//infowindow
          });
 
 	google.maps.event.addListener(marker, 'mouseout', function(event) {
-		//alert('mouseout');
-		//infowindow.close();
-		//setTimeout(function () { this.infowindow.close(); }, 1000);
          });
     
-	 google.maps.event.addListener(infowindow, 'domready', function() {
+/*	google.maps.event.addListener(infowindow, 'domready', function() {
 		 $("#info_window").dialog();                   
 	    });
+*/
 	google.maps.event.addListener(marker, 'click', function() {
-		infowindow.close();
-
-
-			  $.get('/MarvelMap/PointOfInterest/showInfoWindow',
+		//infowindow.close();
+			  $.post('/MarvelMap/PointOfInterest/showInfoWindow', {
+						id : marker.id,
+						
+					},
 			     function(data){
 			      infowindow.setContent(data);
-			      
-			    } );
-
+			    });
 			  //infowindow.setContent("id: "+ id +", name: "+ name +", rating: "+ rating);
 			  infowindow.open(map, marker);	
-				
 	  });
 }
 

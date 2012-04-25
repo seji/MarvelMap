@@ -172,6 +172,10 @@ class PointOfInterestController {
 
 	def showInfoWindow(){
 		println("showInfoWindow");
+		def poiInfo = PointOfInterest.findAllById(params.id);	
+		println(poiInfo);
+		render(view: "showInfoWindow", model:[poiInfoList: poiInfo])
+
 	}
 
 	//def markerService = new MarkerService();
@@ -191,7 +195,7 @@ class PointOfInterestController {
 			maxResults(3)
 			order("rating", "desc")
 		};
-		println(threePOI)
+		//println(threePOI)
 		render(view: "showPOIinBounds", model:[threePOIlist: threePOI])
 	}
 }

@@ -1,76 +1,21 @@
-<style>
-/*body { font-size: 62.5%; }*/
-label,input {
-	display: block;
-}
+<g:each in="${threePOIlist}" status="i" var="pointOfInterestInstance">
+	<script type="text/javascript">	
+		//var id = "${fieldValue(bean: pointOfInterestInstance, field: "id")}";
+		//alert(id);				
+	</script>
+	
+	<label for="poiName">"${fieldValue(bean: pointOfInterestInstance, field: "id")}"</label>
+</g:each>
 
-input.text {
-	margin-bottom: 12px;
-	width: 95%;
-	padding: .4em;
-}
-
-fieldset {
-	padding: 0;
-	border: 0;
-	margin-top: 25px;
-}
-</style>
-<script type="text/javascript">
-
-
-	$(function() {
-		$("#info_window").dialog(
-				{
-					autoOpen : true,
-					height : 400,
-					width : 800,
-					modal : false,
-					resizable : false,
-					draggable : false,
-					buttons : {
-						"Create" : function() {
-							//var my_form = $('form').serialize();
-							//document.write(my_form);
-							document.getElementById('lat').value=clickLocation.lat();
-							document.getElementById('lng').value=clickLocation.lng();
-							document.getElementById('zoom').value=clickZoom.toString();
-							
-							$.post('/MarvelMap/PointOfInterest/save', $('form').serialize(), 
-									function(data) {
-									
-										$('.contextMenu').html(data);
-										$('form').empty();//Clear form data
-									}
-							);
-							$(this).dialog("close");
-						},
-						"Cancel" : function() {
-							$(this).dialog("close");
-							$('form').empty();//Clear form data
-						}
-					}
-				});
-	});
-</script>
-
-<div id="info_window" title="Create new Point of Interest">
-	<g:form action="save">
+<div id="info_window" title="Info window">
+	<g:form action="rating">
 		<fieldset>
 			<label for="poiName">Enter Point of Interest name</label>
-			<g:textField name="name" maxlength="100" class="text ui-widget-content ui-corner-all" />
+			<g:textField name="name" maxlength="100" value = "${fieldValue(bean: pointOfInterestInstance, field: "id")}"/>
+			<ul></ul> 
 			<label for="poiDesc">Enter your description</label>
-			<g:textField name="description"	maxlength="140" class="text ui-widget-content ui-corner-all" />
-
-			<!-- <g:textArea name="description" rows="5" cols="40"  /> -->
-			
-			<g:hiddenField type="hidden" name="lat" id="lat" value=""/>
-			<g:hiddenField type="hidden" name="lng" id="lng" value=""/>
-			<g:hiddenField type="hidden" name="zoom" id="zoom" value=""/>
-
+			<g:textField name="description"	maxlength="140" />
 		</fieldset>
 	</g:form>
 </div>
-
-
 
