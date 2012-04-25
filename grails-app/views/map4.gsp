@@ -79,6 +79,11 @@ $(function() {
 		map = new google.maps.Map(document.getElementById("map_canvas"),
 				myOptions);
 
+		infowindow = new google.maps.InfoWindow({
+			//disableAutoPan : true,
+			//content:  "id: "+ id +", name: "+ name +", rating: "+ rating
+			content:  "marker"
+			});
 		google.maps.event.addListener(map, 'rightclick', function(event) {
 			clickLocation = event.latLng;
 			clickZoom = map.getZoom();
@@ -87,7 +92,10 @@ $(function() {
 				$('.contextMenu').html(data);
 			});
 		});
-
+/*		 google.maps.event.addListener(infowindow, 'domready', function() {
+			 $("#info_window").dialog();                   
+		    });
+*/		    
 		markersArray = [];
 		function clearOverlays() {
 			if (markersArray) {
