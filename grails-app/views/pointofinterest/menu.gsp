@@ -84,6 +84,18 @@
 	});
 </script>
 
+<script type="text/javascript">
+	$("#showInfoWindow").click(function() {
+		$.post('/MarvelMap/PointOfInterest/showInfoWindow', {
+			id : 7,
+		},
+		function(data) {
+			$('.contextMenu').html(data);
+    });
+	});
+</script>
+
+
 
 <div id="test">
 	<ul>
@@ -103,5 +115,8 @@
 	</ul>
 	<ul>
 		<li id="showPOIinBounds">Show POI that fit the current screen</li>
+	</ul>
+	<ul>
+		<li id="showInfoWindow">showInfoWindow</li>
 	</ul>
 </div>

@@ -21,6 +21,17 @@ class PointOfInterest {
 
 		 	}
 	
+	public Integer IncrementRating() {
+		return rating = rating + 1;
+		
+		}
+	
+	public Integer DecrementRating() {
+		return rating = rating - 1;
+	
+	}
+	
+	
 	static constraints = {
 		lat( scale : 16)
 		lng( scale : 16)

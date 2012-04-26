@@ -109,23 +109,28 @@ $(function() {
 			}
 		}
 
+		function showPOIinBounds(){
+			setTimeout(function() {
+				//clear existing markers from the map
+				clearOverlays();
+				// clear markers array
+				markersArray = [];
+				//show all POIs within current bounds
+				$.post('/MarvelMap/PointOfInterest/showPOIinBounds', {
+					NElat : map.getBounds().getNorthEast().lat(),
+					NElng : map.getBounds().getNorthEast().lng(),
+					SWlat : map.getBounds().getSouthWest().lat(),
+					SWlng : map.getBounds().getSouthWest().lng()
+				}, function(data) {
+					$('.contextMenu').html(data);
+				});
+			}, 500);
+
+			}
+
 		$.each('open dragend zoom_changed'.split(' '), function(i, name) {
 			google.maps.event.addListener(map, name, function() {
-				setTimeout(function() {
-					//clear existing markers from the map
-					clearOverlays();
-					// clear markers array
-					markersArray = [];
-					//show all POIs within current bounds
-					$.post('/MarvelMap/PointOfInterest/showPOIinBounds', {
-						NElat : map.getBounds().getNorthEast().lat(),
-						NElng : map.getBounds().getNorthEast().lng(),
-						SWlat : map.getBounds().getSouthWest().lat(),
-						SWlng : map.getBounds().getSouthWest().lng()
-					}, function(data) {
-						$('.contextMenu').html(data);
-					});
-				}, 500);
+				showPOIinBounds();
 			});
 		});
 

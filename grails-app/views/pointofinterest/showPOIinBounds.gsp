@@ -8,7 +8,7 @@ function placeMarker(id,pos,name,desc,rating) {
 		position : pos,
 		title : "id: "+ id +", name: "+ name +", rating: "+ rating ,
 		//title : name,
-		draggable : true,
+		draggable : false,
 		map : map
 	});
 

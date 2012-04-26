@@ -91,8 +91,10 @@ class PointOfInterestController {
 	}
 
 	def update() {
+		
 		def pointOfInterestInstance = PointOfInterest.get(params.id)
 		if (!pointOfInterestInstance) {
+			println("if1")
 			flash.message = message(code: 'default.not.found.message', args: [
 				message(code: 'pointOfInterest.label', default: 'PointOfInterest'),
 				params.id
@@ -104,6 +106,7 @@ class PointOfInterestController {
 		if (params.version) {
 			def version = params.version.toLong()
 			if (pointOfInterestInstance.version > version) {
+				println("if2")
 				pointOfInterestInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
 						[
 							message(code: 'pointOfInterest.label', default: 'PointOfInterest')]
@@ -117,6 +120,7 @@ class PointOfInterestController {
 		pointOfInterestInstance.properties = params
 
 		if (!pointOfInterestInstance.save(flush: true)) {
+			println("if3")
 			render(view: "edit", model: [pointOfInterestInstance: pointOfInterestInstance])
 			return
 		}
@@ -169,11 +173,51 @@ class PointOfInterestController {
 	def removeAllPOI(){
 		println("Remove ALL POI");
 	}
+	
 
+	
+	def updateRatingPlus(){
+		println("updateRatingPlus");
+		println(params)
+		def pointOfInterestInstance = PointOfInterest.get(params.id)
+		pointOfInterestInstance.properties = params
+		pointOfInterestInstance.IncrementRating();
+		println(params)
+		if (!pointOfInterestInstance.save(flush: true)) {
+			render("error!")
+			return
+		}
+		flash.message = message(code: 'default.updated.message', args: [
+			message(code: 'pointOfInterest.label', default: 'PointOfInterest'),
+			pointOfInterestInstance.id
+		])
+		render(view: "updateRatingPlus")
+		}
+
+	def updateRatingMinus(){
+		println("updateRatingMinus");
+		println(params)
+		def pointOfInterestInstance = PointOfInterest.get(params.id)
+		pointOfInterestInstance.properties = params
+		pointOfInterestInstance.DecrementRating();
+		println(params)
+		if (!pointOfInterestInstance.save(flush: true)) {
+			render("error!")
+			return
+		}
+		flash.message = message(code: 'default.updated.message', args: [
+			message(code: 'pointOfInterest.label', default: 'PointOfInterest'),
+			pointOfInterestInstance.id
+		])
+		//redirect(action: "show", id: pointOfInterestInstance.id)
+		}
+	
+		
 	def showInfoWindow(){
-		println("showInfoWindow");
-		def poiInfo = PointOfInterest.findAllById(params.id);	
-		println(poiInfo);
+		//println("showInfoWindow");
+		//def poiInfo = PointOfInterest.findAllById(params.id);
+		def poiInfo = PointOfInterest.findById(params.id);
+		//println(poiInfo);
 		render(view: "showInfoWindow", model:[poiInfoList: poiInfo])
 
 	}

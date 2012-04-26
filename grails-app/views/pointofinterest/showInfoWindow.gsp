@@ -1,21 +1,30 @@
-<g:each in="${threePOIlist}" status="i" var="pointOfInterestInstance">
-	<script type="text/javascript">	
-		//var id = "${fieldValue(bean: pointOfInterestInstance, field: "id")}";
-		//alert(id);				
-	</script>
-	
-	<label for="poiName">"${fieldValue(bean: pointOfInterestInstance, field: "id")}"</label>
-</g:each>
-
 <div id="info_window" title="Info window">
-	<g:form action="rating">
-		<fieldset>
-			<label for="poiName">Enter Point of Interest name</label>
-			<g:textField name="name" maxlength="100" value = "${fieldValue(bean: pointOfInterestInstance, field: "id")}"/>
-			<ul></ul> 
-			<label for="poiDesc">Enter your description</label>
-			<g:textField name="description"	maxlength="140" />
-		</fieldset>
+
+	<ul>
+		<label for="id">Id = ${fieldValue(bean: poiInfoList, field: "id")}</label>
+	</ul>
+	<ul>
+		<label for="name">Name = ${fieldValue(bean: poiInfoList, field: "name")}</label>
+	</ul>
+	<ul>
+		<label for="desc">Description = ${fieldValue(bean: poiInfoList, field: "description")}</label>
+	</ul>
+	<ul>
+		<label for="rating">Rating = ${fieldValue(bean: poiInfoList, field: "rating")}</label>
+	</ul>
+	<g:form action="updateRatingPlus">
+			<g:hiddenField type="hidden" name="id" id="id" value="${fieldValue(bean: poiInfoList, field: "id")}" />
+			<g:hiddenField type="hidden" name="rating" id="rating" value="${fieldValue(bean: poiInfoList, field: "rating")}" />
+			<g:actionSubmit class="save" action="updateRatingPlus" value="Rating +" />
+
+	</g:form>
+		<g:form action="updateRatingMinus">
+			<g:hiddenField type="hidden" name="id" id="id" value="${fieldValue(bean: poiInfoList, field: "id")}" />
+			<g:hiddenField type="hidden" name="rating" id="rating" value="${fieldValue(bean: poiInfoList, field: "rating")}" />
+			<g:actionSubmit class="save" action="updateRatingMinus" value="Rating -" />
+
 	</g:form>
 </div>
+
+
 
