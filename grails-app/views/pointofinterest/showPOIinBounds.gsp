@@ -31,9 +31,17 @@ function placeMarker(id,pos,name,desc,rating) {
 						
 					},
 			     function(data){
-			      infowindow.setContent(data);
+			      //infowindow.setContent(data);
 			    });
-			  //infowindow.setContent("id: "+ id +", name: "+ name +", rating: "+ rating);
+			  infowindow.setContent("id: "+ id);
+			  /*infowindow.setContent('<div><h1>Lorem ipsum</h1>Lorem ipsum dolor sit amet <script type='
+					  				+'"text/javascript">alert('
+					  				+'"qwerty"'
+					  				+');'
+					  				+'<'
+					  				+'/script'
+					  				+'> qwertyu<div>');
+					  				*/
 			  infowindow.open(map, marker);	
 	  });
 }

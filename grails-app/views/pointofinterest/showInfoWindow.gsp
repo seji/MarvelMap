@@ -1,3 +1,5 @@
+
+
 <div id="info_window" title="Info window">
 
 	<ul>
@@ -12,6 +14,11 @@
 	<ul>
 		<label for="rating">Rating = ${fieldValue(bean: poiInfoList, field: "rating")}</label>
 	</ul>
+	<div id="test1">
+	
+	qwerty
+
+	</div>
 	<g:form action="updateRatingPlus">
 			<g:hiddenField type="hidden" name="id" id="id" value="${fieldValue(bean: poiInfoList, field: "id")}" />
 			<g:hiddenField type="hidden" name="rating" id="rating" value="${fieldValue(bean: poiInfoList, field: "rating")}" />

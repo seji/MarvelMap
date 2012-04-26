@@ -191,7 +191,8 @@ class PointOfInterestController {
 			message(code: 'pointOfInterest.label', default: 'PointOfInterest'),
 			pointOfInterestInstance.id
 		])
-		render(view: "updateRatingPlus")
+		//render(view: "updateRatingPlus")
+		response.sendError(200, 'ok')
 		}
 
 	def updateRatingMinus(){
@@ -210,6 +211,7 @@ class PointOfInterestController {
 			pointOfInterestInstance.id
 		])
 		//redirect(action: "show", id: pointOfInterestInstance.id)
+		response.sendError(200, 'ok')
 		}
 	
 		

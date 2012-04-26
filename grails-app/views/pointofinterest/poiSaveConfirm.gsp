@@ -8,10 +8,10 @@ $(function() {
 		buttons: {
 			"OK": function() {
 
-				$.get('/MarvelMap/PointOfInterest/showPOI', function(data) {
+				/*$.get('/MarvelMap/PointOfInterest/showPOI', function(data) {
 					$('.contextMenu').html(data);
 				});
-				
+				*/
 				$( this ).dialog( "close" );
 			}
 		}

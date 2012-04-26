@@ -71,7 +71,7 @@ $(function() {
 	function initialize() {
 		var myOptions = {
 			center : new google.maps.LatLng(10, -10),
-			zoom : 10,
+			zoom : 13,
 			mapTypeId : google.maps.MapTypeId.ROADMAP,
 		};
 
@@ -83,7 +83,7 @@ $(function() {
 		infowindow = new google.maps.InfoWindow({
 			//disableAutoPan : true,
 			//content:  "id: "+ id +", name: "+ name +", rating: "+ rating
-			//content : "marker"
+			content : "marker"
 		});
 
 		google.maps.event.addListener(map, 'rightclick', function(event) {
@@ -95,10 +95,13 @@ $(function() {
 			});
 		});
 
-		/*google.maps.event.addListener(infowindow, 'domready', function() {
-		 $("#info_window").dialog();                   
+		google.maps.event.addListener(infowindow, 'domready', function() {
+
+			 //$("#info_window").dialog();
+			infowindow.setContent("new content"+rating);
+		                    
 		 });
-		 */
+		 
 		markersArray = [];
 
 		function clearOverlays() {
