@@ -15,9 +15,10 @@
 		<label for="rating">Rating = ${fieldValue(bean: poiInfoList, field: "rating")}</label>
 	</ul>
 	<div id="test1">
+	<script type="text/javascript">
+		alert("qwerty");
+	</script>
 	
-	qwerty
-
 	</div>
 	<g:form action="updateRatingPlus">
 			<g:hiddenField type="hidden" name="id" id="id" value="${fieldValue(bean: poiInfoList, field: "id")}" />

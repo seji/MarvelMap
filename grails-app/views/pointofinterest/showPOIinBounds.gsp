@@ -26,14 +26,13 @@ function placeMarker(id,pos,name,desc,rating) {
 */
 	google.maps.event.addListener(marker, 'click', function() {
 		//infowindow.close();
-			  $.post('/MarvelMap/PointOfInterest/showInfoWindow', {
-						id : marker.id,
-						
-					},
-			     function(data){
-			      //infowindow.setContent(data);
-			    });
-			  infowindow.setContent("id: "+ id);
+			  $.post('/MarvelMap/PointOfInterest/showInfoWindow',
+				{id : marker.id},
+				function(data)
+					{infowindow.setContent(data)}
+				);
+			     
+			  //infowindow.setContent("id: "+ id);
 			  /*infowindow.setContent('<div><h1>Lorem ipsum</h1>Lorem ipsum dolor sit amet <script type='
 					  				+'"text/javascript">alert('
 					  				+'"qwerty"'
@@ -59,5 +58,3 @@ function placeMarker(id,pos,name,desc,rating) {
 				
 	</script>
 </g:each>
-
-

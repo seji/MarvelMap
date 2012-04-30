@@ -98,7 +98,7 @@ $(function() {
 		google.maps.event.addListener(infowindow, 'domready', function() {
 
 			 //$("#info_window").dialog();
-			infowindow.setContent("new content"+rating);
+			//infowindow.setContent("new content"+rating);
 		                    
 		 });
 		 
@@ -134,6 +134,7 @@ $(function() {
 		$.each('open dragend zoom_changed'.split(' '), function(i, name) {
 			google.maps.event.addListener(map, name, function() {
 				showPOIinBounds();
+				 
 			});
 		});
 
