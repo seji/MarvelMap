@@ -1,5 +1,4 @@
 
-
 <div id="info_window" title="Info window">
 
 	<ul>
@@ -12,27 +11,17 @@
 		<label for="desc">Description = ${fieldValue(bean: poiInfoList, field: "description")}</label>
 	</ul>
 	<ul>
-		<label for="rating">Rating = ${fieldValue(bean: poiInfoList, field: "rating")}</label>
+		<label for="IW_rating">Rating = </label>
+		<input type="text" id="IW_rating" name="IW_rating" readOnly=true value="${fieldValue(bean: poiInfoList, field: "rating")}"/>
 	</ul>
-	<div id="test1">
-	<script type="text/javascript">
-		alert("qwerty");
-	</script>
+
 	
-	</div>
-	<g:form action="updateRatingPlus">
-			<g:hiddenField type="hidden" name="id" id="id" value="${fieldValue(bean: poiInfoList, field: "id")}" />
-			<g:hiddenField type="hidden" name="rating" id="rating" value="${fieldValue(bean: poiInfoList, field: "rating")}" />
-			<g:actionSubmit class="save" action="updateRatingPlus" value="Rating +" />
+	<input type="hidden" name="IW_marker_id" id="IW_marker_id" value="${fieldValue(bean: poiInfoList, field: "id")}" />
+	<!-- <input type="hidden" name="IW_rating" id="IW_rating" value="${fieldValue(bean: poiInfoList, field: "rating")}" />  -->
+	<input type="button" id="plus_button" onclick="updateRatingPlus()" value="Rating +"/> 
+	<input type="button" id="minus_button" onclick="updateRatingMinus()" value="Rating -"/> 
+	
 
-	</g:form>
-		<g:form action="updateRatingMinus">
-			<g:hiddenField type="hidden" name="id" id="id" value="${fieldValue(bean: poiInfoList, field: "id")}" />
-			<g:hiddenField type="hidden" name="rating" id="rating" value="${fieldValue(bean: poiInfoList, field: "rating")}" />
-			<g:actionSubmit class="save" action="updateRatingMinus" value="Rating -" />
-
-	</g:form>
 </div>
-
 
 

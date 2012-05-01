@@ -177,12 +177,9 @@ class PointOfInterestController {
 
 	
 	def updateRatingPlus(){
-		println("updateRatingPlus");
-		println(params)
 		def pointOfInterestInstance = PointOfInterest.get(params.id)
 		pointOfInterestInstance.properties = params
 		pointOfInterestInstance.IncrementRating();
-		println(params)
 		if (!pointOfInterestInstance.save(flush: true)) {
 			render("error!")
 			return
@@ -191,17 +188,13 @@ class PointOfInterestController {
 			message(code: 'pointOfInterest.label', default: 'PointOfInterest'),
 			pointOfInterestInstance.id
 		])
-		//render(view: "updateRatingPlus")
-		response.sendError(200, 'ok')
+		render(view: "updateRatingPlus", model:[pois : pointOfInterestInstance])
 		}
 
 	def updateRatingMinus(){
-		println("updateRatingMinus");
-		println(params)
 		def pointOfInterestInstance = PointOfInterest.get(params.id)
 		pointOfInterestInstance.properties = params
 		pointOfInterestInstance.DecrementRating();
-		println(params)
 		if (!pointOfInterestInstance.save(flush: true)) {
 			render("error!")
 			return
@@ -210,8 +203,7 @@ class PointOfInterestController {
 			message(code: 'pointOfInterest.label', default: 'PointOfInterest'),
 			pointOfInterestInstance.id
 		])
-		//redirect(action: "show", id: pointOfInterestInstance.id)
-		response.sendError(200, 'ok')
+		render(view: "updateRatingMinus", model:[pois : pointOfInterestInstance])
 		}
 	
 		

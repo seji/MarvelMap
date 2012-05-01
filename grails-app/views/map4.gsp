@@ -83,7 +83,7 @@ $(function() {
 		infowindow = new google.maps.InfoWindow({
 			//disableAutoPan : true,
 			//content:  "id: "+ id +", name: "+ name +", rating: "+ rating
-			content : "marker"
+			//content : "marker"
 		});
 
 		google.maps.event.addListener(map, 'rightclick', function(event) {
@@ -131,10 +131,10 @@ $(function() {
 
 			}
 
+		
 		$.each('open dragend zoom_changed'.split(' '), function(i, name) {
 			google.maps.event.addListener(map, name, function() {
 				showPOIinBounds();
-				 
 			});
 		});
 

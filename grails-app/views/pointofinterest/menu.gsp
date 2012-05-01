@@ -25,11 +25,6 @@
 	fieldset {padding: 0;border: 0;margin-top: 25px;}
 */
 </style>
-<script>
-	$(function() {
-		$("#test").selectable();
-	});
-</script>
 
 <script type="text/javascript">
 	$("#addPOI").click(function() {
@@ -81,17 +76,6 @@
 		}, function(data) {
 			$('.contextMenu').html(data);
 		});
-	});
-</script>
-
-<script type="text/javascript">
-	$("#showInfoWindow").click(function() {
-		$.post('/MarvelMap/PointOfInterest/showInfoWindow', {
-			id : 7,
-		},
-		function(data) {
-			$('.contextMenu').html(data);
-    });
 	});
 </script>
 

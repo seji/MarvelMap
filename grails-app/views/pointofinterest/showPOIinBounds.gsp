@@ -1,5 +1,3 @@
-
-
 <script type="text/javascript">	
 
 function placeMarker(id,pos,name,desc,rating) {
@@ -20,29 +18,32 @@ function placeMarker(id,pos,name,desc,rating) {
 	google.maps.event.addListener(marker, 'mouseout', function(event) {
          });
     
-/*	google.maps.event.addListener(infowindow, 'domready', function() {
-		 $("#info_window").dialog();                   
-	    });
-*/
 	google.maps.event.addListener(marker, 'click', function() {
-		//infowindow.close();
+		infowindow.close();
 			  $.post('/MarvelMap/PointOfInterest/showInfoWindow',
 				{id : marker.id},
 				function(data)
 					{infowindow.setContent(data)}
 				);
-			     
-			  //infowindow.setContent("id: "+ id);
-			  /*infowindow.setContent('<div><h1>Lorem ipsum</h1>Lorem ipsum dolor sit amet <script type='
-					  				+'"text/javascript">alert('
-					  				+'"qwerty"'
-					  				+');'
-					  				+'<'
-					  				+'/script'
-					  				+'> qwertyu<div>');
-					  				*/
 			  infowindow.open(map, marker);	
 	  });
+  
+}
+
+function updateInfoWindow(data){
+	$('#IW_rating').val(data);
+}
+
+function updateRatingPlus(){
+	$.post('/MarvelMap/PointOfInterest/updateRatingPlus',{id : $("#IW_marker_id").val()},function(data){
+		updateInfoWindow(data);
+		});
+}
+
+function updateRatingMinus(){
+	$.post('/MarvelMap/PointOfInterest/updateRatingMinus',{id : $("#IW_marker_id").val()},function(data){
+		updateInfoWindow(data);
+		});
 }
 
 </script>
@@ -58,3 +59,5 @@ function placeMarker(id,pos,name,desc,rating) {
 				
 	</script>
 </g:each>
+
+
