@@ -35,12 +35,12 @@ fieldset {
 							document.getElementById('lat').value=clickLocation.lat();
 							document.getElementById('lng').value=clickLocation.lng();
 							document.getElementById('zoom').value=clickZoom.toString();
-							
+							$("#map_canvas").spin("custom", "white");
 							$.post('/MarvelMap/PointOfInterest/save', $('form').serialize(), 
 									function(data) {
-									
 										$('.contextMenu').html(data);
 										$('form').empty();//Clear form data
+										$("#map_canvas").spin(false);
 									}
 							);
 							$(this).dialog("close");

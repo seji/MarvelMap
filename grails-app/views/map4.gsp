@@ -45,6 +45,14 @@ body {
 
 <script type="text/javascript"
 	src="${resource(dir: 'js', file: 'context_menu.js')}"></script>
+	
+<script type="text/javascript"
+	src="${resource(dir: 'js', file: 'spin.js')}"></script>
+	
+<script type="text/javascript"
+	src="${resource(dir: 'js', file: 'jquery.spin.js')}"></script>
+	
+
 
 <!--<script type="text/javascript">
 $(function() {
@@ -66,6 +74,10 @@ $(function() {
 	});
 });
 </script>-->
+
+<script type="text/javascript">
+$("#dialog-message").spin()
+</script>
 
 <script type="text/javascript">
 	function initialize() {
@@ -113,6 +125,7 @@ $(function() {
 		}
 
 		function showPOIinBounds(){
+			$("#map_canvas").spin("custom", "white");
 			setTimeout(function() {
 				//clear existing markers from the map
 				clearOverlays();
@@ -127,15 +140,18 @@ $(function() {
 				}, function(data) {
 					$('.contextMenu').html(data);
 				});
+				$("#map_canvas").spin(false);
 			}, 500);
-
+			
 			}
 
 		
 		$.each('open dragend zoom_changed'.split(' '), function(i, name) {
+			
 			google.maps.event.addListener(map, name, function() {
 				showPOIinBounds();
 			});
+			
 		});
 
 		/*
@@ -144,17 +160,20 @@ $(function() {
 		context_menu = new contextMenu({
 			map : map
 		});
-
+		
 	}// end initialize
 </script>
+
+
 
 </head>
 <body onload="initialize()">
 
 
-	<!--<div id="dialog-message">
+<!--  	<div id="dialog-message">
 		<p>Welcome screen</p>
 	</div>-->
+	
 	<div id="map_canvas" style="width: 100%; height: 100%"></div>
 
 
