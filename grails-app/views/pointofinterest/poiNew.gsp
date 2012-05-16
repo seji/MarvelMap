@@ -18,40 +18,8 @@ fieldset {
 </style>
 <script type="text/javascript">
 
+	newPOIDialog();
 
-	$(function() {
-		$("#dialog-form").dialog(
-				{
-					autoOpen : true,
-					height : 400,
-					width : 500,
-					modal : true,
-					resizable : false,
-					draggable : false,
-					buttons : {
-						"Create" : function() {
-							//var my_form = $('form').serialize();
-							//document.write(my_form);
-							document.getElementById('lat').value=clickLocation.lat();
-							document.getElementById('lng').value=clickLocation.lng();
-							document.getElementById('zoom').value=clickZoom.toString();
-							$("#map_canvas").spin("custom", "white");
-							$.post('/MarvelMap/PointOfInterest/save', $('form').serialize(), 
-									function(data) {
-										$('.contextMenu').html(data);
-										$('form').empty();//Clear form data
-										$("#map_canvas").spin(false);
-									}
-							);
-							$(this).dialog("close");
-						},
-						"Cancel" : function() {
-							$(this).dialog("close");
-							$('form').empty();//Clear form data
-						}
-					}
-				});
-	});
 </script>
 
 <div id="dialog-form" title="Create new Point of Interest">

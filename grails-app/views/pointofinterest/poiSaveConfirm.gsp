@@ -1,22 +1,11 @@
 <script type="text/javascript">
-$(function() {
-	$( "#dialog-message" ).dialog({
-		modal: true,
-		title : "Marvel Map",
-		draggable : false,
-		resizable : false,
-		buttons: {
-			"OK": function() {
+	var p = new google.maps.LatLng(${fieldValue(bean: poi, field: "lat")},${fieldValue(bean: poi, field: "lng")});
+	var n = "${fieldValue(bean: poi, field: "name")}"
+	var d = "${fieldValue(bean: poi, field: "description")}"
+	var id = "${fieldValue(bean: poi, field: "id")}"
+	var r = "${fieldValue(bean: poi, field: "rating")}"
+	newPOISaveConfirm();
 
-				/*$.get('/MarvelMap/PointOfInterest/showPOI', function(data) {
-					$('.contextMenu').html(data);
-				});
-				*/
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-});
 </script>
 
 <div id="dialog-message">

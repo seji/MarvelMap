@@ -57,7 +57,8 @@ class PointOfInterestController {
 
 		//flash.message = message(code: 'default.created.message', args: [message(code: 'pointOfInterest.label', default: 'PointOfInterest'), pointOfInterestInstance.id])
 		//redirect(action: "show", id: pointOfInterestInstance.id)
-		redirect(action: "poiSaveConfirm")
+		//redirect(action: "poiSaveConfirm")
+		render(view: "poiSaveConfirm", model:[poi : pointOfInterestInstance])
 		println(params);
 
 	}
@@ -165,14 +166,12 @@ class PointOfInterestController {
 	 render poi as JSON
 	 }
 	 */
+	
 	def showAllPOI(){
 		//[pointOfInterestInstance: new PointOfInterest(params)]
 		render(view: "showAllPOI", model:[pointOfInterestInstanceList: PointOfInterest.list(params)])
 	}
 
-	def removeAllPOI(){
-		println("Remove ALL POI");
-	}
 	
 
 	
