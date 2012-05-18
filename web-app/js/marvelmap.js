@@ -1,4 +1,10 @@
+
+///////////////////////////////////////////////////////////////////////////////
+
 //Initializes google.map, adds listeners
+
+///////////////////////////////////////////////////////////////////////////////
+
 function initialize() {
 	var myOptions = {
 		center : new google.maps.LatLng(10, -10),
@@ -45,7 +51,11 @@ function initialize() {
 
 }// end initialize
 
+///////////////////////////////////////////////////////////////////////////////
+
 // Deletes markers from the map
+
+///////////////////////////////////////////////////////////////////////////////
 function clearOverlays() {
 	if (markersArray) {
 		for ( var i = 0; i < markersArray.length; i++) {
@@ -54,7 +64,11 @@ function clearOverlays() {
 	}
 }
 
+///////////////////////////////////////////////////////////////////////////////
+
 // Show number of points which fit into screen
+
+///////////////////////////////////////////////////////////////////////////////
 function showPOIinBounds() {
 	$("#map_canvas").spin("custom", "white");
 	setTimeout(function() {
@@ -75,13 +89,17 @@ function showPOIinBounds() {
 	}, 500);
 }
 
+///////////////////////////////////////////////////////////////////////////////
+
 // Places actual markers on the map
+
+///////////////////////////////////////////////////////////////////////////////
 function placeMarker(id, pos, name, desc, rating, newPOI) {
 	var marker = new google.maps.Marker({
 		id : id,
 		position : pos,
-		title : "id: " + id + ", name: " + name + ", rating: " + rating,
-		// title : name,
+		//title : "id: " + id + ", name: " + name + ", rating: " + rating,
+		title : name,
 		draggable : false,
 		map : map
 	});
@@ -121,12 +139,20 @@ function placeMarker(id, pos, name, desc, rating, newPOI) {
 
 }
 
-// update rating on the InfoWindow
+///////////////////////////////////////////////////////////////////////////////
+
+// Update rating on the InfoWindow
+
+///////////////////////////////////////////////////////////////////////////////
 function updateInfoWindow(data) {
 	$('#IW_rating').val(data);
 }
 
+///////////////////////////////////////////////////////////////////////////////
+
 // Increases rating
+
+///////////////////////////////////////////////////////////////////////////////
 function updateRatingPlus() {
 	$.post('/MarvelMap/PointOfInterest/updateRatingPlus', {
 		id : $("#IW_marker_id").val()
@@ -135,7 +161,11 @@ function updateRatingPlus() {
 	});
 }
 
+///////////////////////////////////////////////////////////////////////////////
+
 // Decreases rating
+
+///////////////////////////////////////////////////////////////////////////////
 function updateRatingMinus() {
 	$.post('/MarvelMap/PointOfInterest/updateRatingMinus', {
 		id : $("#IW_marker_id").val()
@@ -144,7 +174,11 @@ function updateRatingMinus() {
 	});
 }
 
+///////////////////////////////////////////////////////////////////////////////
+
 // shows dialog for adding a new POI, then saves data
+
+///////////////////////////////////////////////////////////////////////////////
 function newPOIDialog() {
 
 	$(function() {
@@ -183,7 +217,11 @@ function newPOIDialog() {
 	});
 }
 
+///////////////////////////////////////////////////////////////////////////////
+
 // Confirm POI was saved successfully
+
+///////////////////////////////////////////////////////////////////////////////
 function newPOISaveConfirm() {
 	$(function() {
 		$("#dialog-message").dialog({
@@ -194,6 +232,7 @@ function newPOISaveConfirm() {
 			buttons : {
 				"OK" : function() {
 					placeMarker(id, p, n, d, r, true);
+					
 					$(this).dialog("close");
 				}
 			}
