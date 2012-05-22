@@ -92,7 +92,7 @@ class PointOfInterestController {
 	}
 
 	def update() {
-		
+
 		def pointOfInterestInstance = PointOfInterest.get(params.id)
 		if (!pointOfInterestInstance) {
 			println("if1")
@@ -161,24 +161,22 @@ class PointOfInterestController {
 		}
 	}
 
-	/*	def getPOI(){
-	 def poi = markerService.getPOI()
-	 render poi as JSON
-	 }
-	 */
-	
 	def showAllPOI(){
 		//[pointOfInterestInstance: new PointOfInterest(params)]
 		render(view: "showAllPOI", model:[pointOfInterestInstanceList: PointOfInterest.list(params)])
 	}
 
-	
 
-	
-	def updateRatingPlus(){
+	def updateRating(){
 		def pointOfInterestInstance = PointOfInterest.get(params.id)
 		pointOfInterestInstance.properties = params
-		pointOfInterestInstance.IncrementRating();
+
+		if (params.inc == 'true'){
+			pointOfInterestInstance.IncrementRating();
+		}
+		else {
+			pointOfInterestInstance.DecrementRating();
+		}
 		if (!pointOfInterestInstance.save(flush: true)) {
 			render("error!")
 			return
@@ -187,25 +185,10 @@ class PointOfInterestController {
 			message(code: 'pointOfInterest.label', default: 'PointOfInterest'),
 			pointOfInterestInstance.id
 		])
-		render(view: "updateRatingPlus", model:[pois : pointOfInterestInstance])
-		}
+		render(view: "updateRating", model:[pois : pointOfInterestInstance])
+	}
 
-	def updateRatingMinus(){
-		def pointOfInterestInstance = PointOfInterest.get(params.id)
-		pointOfInterestInstance.properties = params
-		pointOfInterestInstance.DecrementRating();
-		if (!pointOfInterestInstance.save(flush: true)) {
-			render("error!")
-			return
-		}
-		flash.message = message(code: 'default.updated.message', args: [
-			message(code: 'pointOfInterest.label', default: 'PointOfInterest'),
-			pointOfInterestInstance.id
-		])
-		render(view: "updateRatingMinus", model:[pois : pointOfInterestInstance])
-		}
-	
-		
+
 	def showInfoWindow(){
 		//println("showInfoWindow");
 		//def poiInfo = PointOfInterest.findAllById(params.id);
@@ -217,11 +200,15 @@ class PointOfInterestController {
 
 	//def markerService = new MarkerService();
 	def showPOIinBounds(){
+		//println(params)
 		//convert string representation of bounds latlng back to Double
 		Double dSWlat = params.SWlat.toDouble();
 		Double dNElat = params.NElat.toDouble();
 		Double dSWlng = params.SWlng.toDouble();
 		Double dNElng = params.NElng.toDouble();
+		
+		//if (dNElng < 179.99){println('NElng > 179.99')}
+		
 
 		def c = PointOfInterest.createCriteria()
 		def threePOI = c.list {

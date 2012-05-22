@@ -42,6 +42,10 @@ body {
 <link rel="stylesheet"
 	href="${resource(dir: 'css/ui-lightness', file: 'jquery-ui-1.8.18.custom.css')}"
 	type="text/css">
+	
+<link rel="stylesheet"
+	href="${resource(dir: 'css', file: 'counter.css')}"
+	type="text/css">
 
 <script type="text/javascript"
 	src="${resource(dir: 'js', file: 'context_menu.js')}"></script>
@@ -54,27 +58,12 @@ body {
 	
 <script type="text/javascript"
 	src="${resource(dir: 'js', file: 'marvelmap.js')}"></script>
+
+<script type="text/javascript"
+	src="${resource(dir: 'js', file: 'flipcounter.js')}"></script>	
 	
 
-<!--<script type="text/javascript">
-$(function() {
-	// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
-	$( "#dialog:ui-dialog" ).dialog( "destroy" );
-
-	$( "#dialog-message" ).dialog({
-		modal: true,
-		title : "Marvel Map",
-		draggable : false,
-		resizable : false,
-		buttons: {
-			"Start!": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-});
-</script>-->
-
+	
 </head>
 
 <body onload="initialize()">
