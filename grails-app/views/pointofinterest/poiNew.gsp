@@ -1,5 +1,5 @@
 <style>
-/*body { font-size: 62.5%; }*/
+body { font-size: 70%; }
 label,input {
 	display: block;
 }
@@ -28,7 +28,7 @@ fieldset {
 			<label for="poiName">Enter Point of Interest name</label>
 			<g:textField name="name" maxlength="100" class="text ui-widget-content ui-corner-all" />
 			<label for="poiDesc">Enter your description</label>
-			<g:textField name="description"	maxlength="140" class="text ui-widget-content ui-corner-all" />
+			<g:textField name="description"	maxlength="500" class="text ui-widget-content ui-corner-all" />
 
 			<!-- <g:textArea name="description" rows="5" cols="40"  /> -->
 			

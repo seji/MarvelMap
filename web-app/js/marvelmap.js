@@ -17,16 +17,19 @@ function initialize() {
 
 	// initialize infowindow
 	infowindow = new google.maps.InfoWindow({
+		//maxWidth : 10000,
 	// disableAutoPan : true,
 	// content: "id: "+ id +", name: "+ name +", rating: "+ rating
-	// content : "marker"
+	 content : " "
 	});
 	
 	
 	google.maps.event.addListener(infowindow, 'domready', function() {
 
-	
-		myCounter = new flipCounter('rating_counter', {inc: 0});
+		myCounter = new flipCounter('rating_counter',{
+			inc: 0,
+			value: 0
+			});
 		
 		var counter_value = parseInt($("#IW_marker_rating").val());
 		myCounter.setValue(counter_value);
@@ -182,7 +185,7 @@ function updateRating(increase) {
 ///////////////////////////////////////////////////////////////////////////////
 function updateRatingInfoWindow(data) {
 	var counter_value = parseInt(data);
-	myCounter.setValue(counter_value);
+	myCounter.setValue(counter_value,1);
 	//$('#IW_rating').val(data);
 	// myCounter.incrementTo(counter_value, 5);
 	//document.getElementById('IW_rating').innerHTML = data;
