@@ -9,7 +9,7 @@ class PointOfInterest {
 	Date dateAdded = new Date();	
 	Double lat
 	Double lng
-	Integer rating = new Random().nextInt(100);
+	Integer rating = new Random().nextInt(10000);
 
 
  //	static mapWith="mongo"
@@ -33,8 +33,9 @@ class PointOfInterest {
 	
 	
 	static constraints = {
-		lat( scale : 16)
-		lng( scale : 16)
+		//lat( scale : 16)
+		//lng( scale : 16)
+		
 		name()
 		description()
  

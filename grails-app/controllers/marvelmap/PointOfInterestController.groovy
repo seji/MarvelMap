@@ -38,7 +38,7 @@ class PointOfInterestController {
 	}
 
 	def list() {
-		params.max = Math.min(params.max ? params.int('max') : 10, 100)
+		params.max = Math.min(params.max ? params.int('max') : 5, 100)
 		[pointOfInterestInstanceList: PointOfInterest.list(params), pointOfInterestInstanceTotal: PointOfInterest.count()]
 	}
 
@@ -59,7 +59,7 @@ class PointOfInterestController {
 		//redirect(action: "show", id: pointOfInterestInstance.id)
 		//redirect(action: "poiSaveConfirm")
 		render(view: "poiSaveConfirm", model:[poi : pointOfInterestInstance])
-		println(params);
+		//println(params);
 
 	}
 
