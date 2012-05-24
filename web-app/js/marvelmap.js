@@ -20,7 +20,7 @@ function initialize() {
 		//maxWidth : 10000,
 	// disableAutoPan : true,
 	// content: "id: "+ id +", name: "+ name +", rating: "+ rating
-	 content : " "
+	 content : ""
 	});
 	
 	
@@ -170,12 +170,14 @@ function updateRating(increase) {
 	} else {
 		var _inc = false;
 	}
+	$("#map_canvas").spin("custom", "white");
 	$.post('/MarvelMap/PointOfInterest/updateRating', {
 		inc : _inc,
 		id : $("#IW_marker_id").val()
 	}, function(data) {
 		updateRatingInfoWindow(data);
 	});
+	$("#map_canvas").spin(false);
 }
 
 ///////////////////////////////////////////////////////////////////////////////

@@ -9,7 +9,7 @@ class PointOfInterest {
 	Date dateAdded = new Date();	
 	Double lat
 	Double lng
-	Integer rating = new Random().nextInt(10000);
+	Integer rating = new Random().nextInt(99000000);
 
 
  //	static mapWith="mongo"
