@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <style>
 body {
-	font-size: 100%;
+	font-size: 90%;
 }
 /*#info_window { width: 400px; height: 300px; padding: 0.4em;}*/
 #info_window { 
@@ -19,20 +19,21 @@ body {
 	position:relative;
 	float: left;
 	top: 23px;
+	left: -50px;
 	border-style:dashed;
 	border-width:1px;
 }
 
 #inner_info_window { 
-	position:relative;
-	float: left;
+	/*position:relative;
+	float: left;*/
 	/*width: 390px;*/
 	min-width:560px;
 	/*float:left;*/
-	padding: 0.4em;
+	padding: 0.2em;
 	
-	border-style:dashed;
-	border-width:1px;
+	/*border-style:dashed;
+	border-width:1px;*/
 }
 
 #inner_info_window h3 {
@@ -59,22 +60,23 @@ body {
 #rating_counter {
 	position:relative;
 	top:23px;
-	border-style:dashed;
+	
+	/*border-style:dashed;
 	border-width:1px;
-	border-color:green;
+	border-color:green;*/
 
 }
 
 #rating_counter_wrapper {
-	position:relative;
+	/*position:relative;*/
 	/*height: 160px;*/
 	margin: 0;
 	padding: 0.4em;
 	text-align: center;
 	
-	border-style:dashed;
+	/*border-style:dashed;
 	border-width:1px;
-	border-color:red;
+	border-color:red;*/
 	
 
 }
@@ -136,12 +138,12 @@ body {
 }
 </style>
 
-<!-- <div id="info_window" title="info_window" class="ui-widget"> 
+<!-- <div id="info_window" title="info_window" class="ui-widget">  -->  
 
-	<div id="inner_info_window_left" title="left" class="ui-widget">
+<!-- 	<div id="inner_info_window_left" title="left" class="ui-widget">
  		bla bla  
-	</div>-->
-
+	</div>
+ -->
 	<div id="inner_info_window" title="inner_info_window" class="ui-widget">
 
 		<h3 class="ui-widget-header ui-corner-all">
@@ -187,5 +189,5 @@ body {
 	</div>
 -->	
 
-<!--</div>-->	
+<!-- </div>  -->	
 

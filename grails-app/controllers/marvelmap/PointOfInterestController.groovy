@@ -31,7 +31,7 @@ class PointOfInterestController {
 
 	def poiNew() {
 		[pointOfInterestInstance: new PointOfInterest(params)]
-		println(params);
+		//println(params);
 	}
 
 	def poiSaveConfirm() {

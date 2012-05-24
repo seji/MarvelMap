@@ -1,5 +1,5 @@
 <style>
-body { font-size: 70%; }
+body { font-size: 100%; }
 label,input {
 	display: block;
 }
