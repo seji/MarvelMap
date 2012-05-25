@@ -5,18 +5,19 @@ body {
 }
 /*#info_window { width: 400px; height: 300px; padding: 0.4em;}*/
 #info_window { 
+	position:relative;
 	/*width: 400px;*/
 	/*min-width:560px;*/
 	/*height: 300px;*/
 	padding: 0.4em;
-	
+
 	border-style:dashed;
 	border-width:1px;
 	border-color:blue;
 }
 
 #inner_info_window_left {
-	position:relative;
+	position:absolute;
 	float: left;
 	top: 23px;
 	left: -50px;
@@ -25,9 +26,10 @@ body {
 }
 
 #inner_info_window { 
+	/*position:relative;*/
 	/*position:relative;
 	float: left;*/
-	/*width: 390px;*/
+	width: 100%;
 	min-width:560px;
 	/*float:left;*/
 	padding: 0.2em;
@@ -58,26 +60,32 @@ body {
 }
 */
 #rating_counter {
-	position:relative;
-	top:23px;
+	margin: 0;
+	padding: 0.4em;
+	/*position:relative;*/
 	
-	/*border-style:dashed;
+	margin-top:20px;
+	/*left: 50%;*/
+	/*float: left;*/
+	/*margin: 0 0 0 -50%;*/
+	
+	border-style:dashed;
 	border-width:1px;
-	border-color:green;*/
+	border-color:green;
 
 }
 
-#rating_counter_wrapper {
-	/*position:relative;*/
+/*#rating_counter_wrapper {
+	position:relative;
 	/*height: 160px;*/
-	margin: 0;
+	/*margin: 0;
 	padding: 0.4em;
 	text-align: center;
-	
-	/*border-style:dashed;
+	*/
+/*	border-style:dashed;
 	border-width:1px;
-	border-color:red;*/
-	
+	border-color:red;
+*/	
 
 }
 
@@ -90,15 +98,16 @@ body {
 }
 
 #buttons_wrapper {
-	/*position: relative;*/
-	float: left;
+	position: relative;
+	/*float: left;*/
 	margin: 0;
 	padding: 0.4em;
 	/*font-size:3em;*/
 	/*text-align: center*/
 	
-	/*border-style:dashed;
-	border-width:1px;*/
+	border-style:dashed;
+	border-width:1px;
+	border-color:blue;
 }
 
 /*button taken from here http://www.wpclipart.com/signs_symbol/button/*/
@@ -138,7 +147,7 @@ body {
 }
 </style>
 
-<!-- <div id="info_window" title="info_window" class="ui-widget">  -->  
+<div id="info_window" title="info_window" class="ui-widget">  
 
 <!-- 	<div id="inner_info_window_left" title="left" class="ui-widget">
  		bla bla  
@@ -166,7 +175,7 @@ body {
 		</div>
 -->	
 
- 		<div id="rating_counter_wrapper" title="Current rating" class="ui-widget">  
+<!--  		<div id="rating_counter_wrapper" title="Current rating" class="ui-widget">  -->  
 			<!--<h2>Rating:</h2>-->
 			
 			<div id="buttons_wrapper" class="ui-widget">
@@ -174,14 +183,11 @@ body {
 				<p></p>
 				<input type="button" title="Decrease rating" class="minus_button" id="minus_button" onclick="updateRating(false)" value="" />
 			</div>		
+
 			<div id="rating_counter" class="flip-counter"> </div>
-
-
-			
-
 		</div>
 
-	</div>
+<!-- 	</div>  -->
 	
 <!-- 	
 	<div id="inner_info_window_right" class="ui-widget-content ui-corner-all">
@@ -189,5 +195,5 @@ body {
 	</div>
 -->	
 
-<!-- </div>  -->	
+</div>	
 
