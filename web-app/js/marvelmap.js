@@ -26,14 +26,19 @@ function initialize() {
 	
 	google.maps.event.addListener(infowindow, 'domready', function() {
 
-		myCounter = new flipCounter('rating_counter',{
+/*		myCounter = new flipCounter('rating_counter',{
 			inc: 0,
 			value: 0
 			});
 		
 		var counter_value = parseInt($("#IW_marker_rating").val());
+		
 		myCounter.setValue(counter_value);
-			
+*/
+		
+		document.getElementById('IW_rating').innerHTML = $("#IW_marker_rating").val();
+		//$('#IW_rating').val(data);
+		
 		$( "input:submit, input:button").button();
 	
 	    $('#info_window').show();
@@ -186,11 +191,12 @@ function updateRating(increase) {
 
 ///////////////////////////////////////////////////////////////////////////////
 function updateRatingInfoWindow(data) {
-	var counter_value = parseInt(data);
+/*	var counter_value = parseInt(data);
 	myCounter.setValue(counter_value,1);
+*/
 	//$('#IW_rating').val(data);
 	// myCounter.incrementTo(counter_value, 5);
-	//document.getElementById('IW_rating').innerHTML = data;
+	document.getElementById('IW_rating').innerHTML = data;
 	//$('#IW_rating').val(data);
 
 }

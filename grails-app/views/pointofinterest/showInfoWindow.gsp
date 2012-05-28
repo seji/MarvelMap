@@ -5,10 +5,10 @@ body {
 }
 /*#info_window { width: 400px; height: 300px; padding: 0.4em;}*/
 #info_window { 
-	position:relative;
 	/*width: 400px;*/
 	/*min-width:560px;*/
 	/*height: 300px;*/
+	margin: 0;
 	padding: 0.4em;
 
 	border-style:dashed;
@@ -16,49 +16,22 @@ body {
 	border-color:blue;
 }
 
-#inner_info_window_left {
-	position:absolute;
-	float: left;
-	top: 23px;
-	left: -50px;
-	border-style:dashed;
-	border-width:1px;
-}
-
-#inner_info_window { 
-	/*position:relative;*/
-	/*position:relative;
-	float: left;*/
-	width: 100%;
-	min-width:560px;
-	/*float:left;*/
-	padding: 0.2em;
-	
-	/*border-style:dashed;
-	border-width:1px;*/
-}
-
-#inner_info_window h3 {
+#info_window h4 {
 	margin: 0;
 	padding: 0.4em;
 	text-align: center
 }
 
-#inner_info_window h2 {
-	margin: 0;
-	padding: 0.4em;
-	text-align: left;
+
+#content_wrapper{
+	position: relative;
+	overflow: hidden;
+	
+	border-style:dashed;
+	border-width:1px;
+	border-color:red;
 }
 
-
-
-/*#inner_info_window_right {
-	width: 130px;
-	height: 300px;
-	padding: 0.4em;
-	float: left;
-}
-*/
 #rating_counter {
 	margin: 0;
 	padding: 0.4em;
@@ -85,17 +58,39 @@ body {
 /*	border-style:dashed;
 	border-width:1px;
 	border-color:red;
-*/	
+	
 
 }
+*/
 
 #description_wrapper {
-	margin: 0;
-	padding: 0.4em;
+
+	position: absolute;
+	/*float: left;
+	width: 70%;*/
 	
-	/*border-style:dashed;
-	border-width:1px;*/
+	border-style:dashed;
+	border-width:1px;
+	border-color:green;
 }
+#image_wrapper {
+
+	position: absolute;
+	float: right;
+	top:0;
+ right:0;
+	/*width: 50%;*/
+	
+	border-style:dashed;
+	border-width:1px;
+	border-color:green;
+}
+.image_label{
+	height: 56px;
+	width: 56px;
+
+}
+
 
 #buttons_wrapper {
 	position: relative;
@@ -145,55 +140,36 @@ body {
 .clear {
 	clear: both
 }
+
+
+
 </style>
 
 <div id="info_window" title="info_window" class="ui-widget">  
 
-<!-- 	<div id="inner_info_window_left" title="left" class="ui-widget">
- 		bla bla  
-	</div>
- -->
-	<div id="inner_info_window" title="inner_info_window" class="ui-widget">
+			<h4 class="ui-widget-header ui-corner-all">
+				${fieldValue(bean: poiInfoList, field: "name")}
+			</h4>
 
-		<h3 class="ui-widget-header ui-corner-all">
-			${fieldValue(bean: poiInfoList, field: "name")}
-		</h3>
-
-		<div id="description_wrapper" title="Description" class="ui-widget">
-			<label for="desc">
-				${fieldValue(bean: poiInfoList, field: "description")}
-			</label>
-		</div>
-
-
-		<input type="hidden" name="IW_marker_id" id="IW_marker_id"	value="${fieldValue(bean: poiInfoList, field: "id")}" /> 
-		<input type="hidden" name="IW_marker_rating" id="IW_marker_rating" value="${poiInfoList.rating}" />
-
-<!--		<div id="buttons_wrapper" title="Update rating" class="ui-widget">
-			<input type="button" id="plus_button" onclick="updateRating(true)"	value="Rating +" /> 
-			<input type="button" id="minus_button" onclick="updateRating(false)" value="Rating -" />
-		</div>
--->	
-
-<!--  		<div id="rating_counter_wrapper" title="Current rating" class="ui-widget">  -->  
-			<!--<h2>Rating:</h2>-->
+			<div id="content_wrapper">
+						
+				<div id="description_wrapper" title="Description" class="ui-widget">
+					<label>
+						${fieldValue(bean: poiInfoList, field: "description")}
+					</label>
+				</div>
+				
+				
+				
+				<div id="image_wrapper" title="Image" class="ui-widget">
+					<img src="http://www.digyourowngrave.com/content/eiffel_tower.jpg" class="image_label"/>
+				</div>
+				
+				<hr class="clear"/>
+			</div>
 			
-			<div id="buttons_wrapper" class="ui-widget">
-				<input type="button" title="Increase rating" class="plus_button" id="plus_button" onclick="updateRating(true)"	value="" /> 
-				<p></p>
-				<input type="button" title="Decrease rating" class="minus_button" id="minus_button" onclick="updateRating(false)" value="" />
-			</div>		
+		
 
-			<div id="rating_counter" class="flip-counter"> </div>
-		</div>
-
-<!-- 	</div>  -->
-	
-<!-- 	
-	<div id="inner_info_window_right" class="ui-widget-content ui-corner-all">
-		bla bla
-	</div>
--->	
 
 </div>	
 
