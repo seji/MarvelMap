@@ -41,6 +41,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${pointOfInterestInstance?.imageURL}">
+				<li class="fieldcontain">
+					<span id="imageURL-label" class="property-label"><g:message code="pointOfInterest.imageURL.label" default="Image URL" /></span>
+					
+						<span class="property-value" aria-labelledby="imageURL-label"><g:fieldValue bean="${pointOfInterestInstance}" field="imageURL"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${pointOfInterestInstance?.lat}">
 				<li class="fieldcontain">
 					<span id="lat-label" class="property-label"><g:message code="pointOfInterest.lat.label" default="Lat" /></span>

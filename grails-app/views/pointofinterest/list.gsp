@@ -28,13 +28,13 @@
 					
 						<g:sortableColumn property="description" title="${message(code: 'pointOfInterest.description.label', default: 'Description')}" />
 					
+						<g:sortableColumn property="imageURL" title="${message(code: 'pointOfInterest.imageURL.label', default: 'Image URL')}" />
+					
 						<g:sortableColumn property="lat" title="${message(code: 'pointOfInterest.lat.label', default: 'Lat')}" />
 					
 						<g:sortableColumn property="lng" title="${message(code: 'pointOfInterest.lng.label', default: 'Lng')}" />
 					
 						<g:sortableColumn property="name" title="${message(code: 'pointOfInterest.name.label', default: 'Name')}" />
-					
-						<g:sortableColumn property="rating" title="${message(code: 'pointOfInterest.rating.label', default: 'Rating')}" />
 					
 					</tr>
 				</thead>
@@ -46,13 +46,13 @@
 					
 						<td>${fieldValue(bean: pointOfInterestInstance, field: "description")}</td>
 					
+						<td>${fieldValue(bean: pointOfInterestInstance, field: "imageURL")}</td>
+					
 						<td>${fieldValue(bean: pointOfInterestInstance, field: "lat")}</td>
 					
 						<td>${fieldValue(bean: pointOfInterestInstance, field: "lng")}</td>
 					
 						<td>${fieldValue(bean: pointOfInterestInstance, field: "name")}</td>
-					
-						<td>${fieldValue(bean: pointOfInterestInstance, field: "rating")}</td>
 					
 					</tr>
 				</g:each>

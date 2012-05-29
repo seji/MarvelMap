@@ -18,6 +18,14 @@
 	<g:textField name="description" value="${pointOfInterestInstance?.description}" />
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: pointOfInterestInstance, field: 'imageURL', 'error')} ">
+	<label for="imageURL">
+		<g:message code="pointOfInterest.imageURL.label" default="Image URL" />
+		
+	</label>
+	<g:textField name="imageURL" value="${pointOfInterestInstance?.imageURL}" />
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: pointOfInterestInstance, field: 'lat', 'error')} ">
 	<label for="lat">
 		<g:message code="pointOfInterest.lat.label" default="Lat" />

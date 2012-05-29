@@ -10,6 +10,7 @@ class PointOfInterest {
 	Double lat
 	Double lng
 	Integer rating = new Random().nextInt(99000000);
+	String imageURL = "http://www.digyourowngrave.com/content/eiffel_tower.jpg"
 
 
  //	static mapWith="mongo"
@@ -18,7 +19,6 @@ class PointOfInterest {
 	
 	public String toString() {
 		 return "[id:"+ id + ", name:" + name + ", description:" + description+ ", lat:" + lat + ", lng:" + lng + ", rating:" + rating+"]";
-
 		 	}
 	
 	public Integer IncrementRating() {
@@ -38,5 +38,6 @@ class PointOfInterest {
 		
 		name()
 		description()
+		imageURL()
  
 	}}
