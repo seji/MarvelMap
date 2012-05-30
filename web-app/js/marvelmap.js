@@ -17,7 +17,7 @@ function initialize() {
 
 	// initialize infowindow
 	infowindow = new google.maps.InfoWindow({
-		//maxWidth : 10000,
+		maxWidth : 10000,
 	// disableAutoPan : true,
 	// content: "id: "+ id +", name: "+ name +", rating: "+ rating
 	 content : ""
@@ -25,25 +25,11 @@ function initialize() {
 	
 	
 	google.maps.event.addListener(infowindow, 'domready', function() {
-
-/*		myCounter = new flipCounter('rating_counter',{
-			inc: 0,
-			value: 0
-			});
-		
-		var counter_value = parseInt($("#IW_marker_rating").val());
-		
-		myCounter.setValue(counter_value);
-*/
-		
 		document.getElementById('IW_rating').innerHTML = $("#IW_marker_rating").val();
-		//$('#IW_rating').val(data);
-		
 		$( "input:submit, input:button").button();
-	
 	    $('#info_window').show();
-
-		    
+	    //$('#info_window').show(); ??????????????????????? reorganize ???
+	    
 	});  
 
 	google.maps.event.addListener(map, 'rightclick', function(event) {
@@ -141,6 +127,7 @@ function placeMarker(id, pos, name, desc, rating, newPOI) {
 		);
 		marker.setIcon(image);
 		marker.setShadow(shadow);
+		marker.setZIndex(999);
 	} else {
 		markersArray.push(marker);
 	}
@@ -198,6 +185,7 @@ function updateRatingInfoWindow(data) {
 	// myCounter.incrementTo(counter_value, 5);
 	document.getElementById('IW_rating').innerHTML = data;
 	//$('#IW_rating').val(data);
+	$("input:submit, input:button").hide(1000);
 
 }
 

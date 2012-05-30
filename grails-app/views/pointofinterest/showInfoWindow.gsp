@@ -1,6 +1,16 @@
+
 <!DOCTYPE html>
+<html>
+
 <style>
+
+html {
+	overflow: hidden;
+	height: 100%;
+}
+
 body {
+	overflow: hidden;
 	font-size: 90%;
 }
 /*#info_window { width: 400px; height: 300px; padding: 0.4em;}*/
@@ -17,7 +27,6 @@ body {
 	padding: 0.4em;
 	text-align: center;
 }
-
 
 #content_wrapper{
 	/*border-style:dashed;
@@ -61,6 +70,16 @@ body {
     border-bottom: 1px solid rgba(255, 255, 255, 0.3); 
 }
 
+#adv {
+	margin: 0;
+	padding: 0.4em;
+	height: 2em;
+
+	border-style:dashed;
+	border-width:1px;
+	border-color:green;
+}
+
 /*
 #buttons_wrapper {
 	margin: 0;
@@ -69,22 +88,25 @@ body {
 	border-width:1px;
 	border-color:blue;
 }
-
-button taken from here http://www.wpclipart.com/signs_symbol/button/
+*/
+/*button taken from here http://www.wpclipart.com/signs_symbol/button/*/
 .plus_button{
-    background:url(/MarvelMap/images/up.png) no-repeat;
+    /*background:url(/MarvelMap/images/up.png) no-repeat;
     width: 52px;
-	height: 52px;
+	height: 52px;*/
+	margin: 0;
+	padding: 0;
     cursor:pointer;
-    border: none;
+    /*border: none;*/
 }
-
+/*
 .plus_button:hover{
     background:url(/MarvelMap/images/up_hover.png) no-repeat;
     width: 52px;
 	height: 52px;
 }
-
+*/
+/*
 .minus_button{
     background:url(/MarvelMap/images/down.png) no-repeat;
     width: 52px;
@@ -92,6 +114,8 @@ button taken from here http://www.wpclipart.com/signs_symbol/button/
     cursor:pointer;
     border: none;
 }
+*/
+/*
 .minus_button:hover{
     background:url(/MarvelMap/images/down_hover.png) no-repeat;
     width: 52px;
@@ -102,8 +126,10 @@ button taken from here http://www.wpclipart.com/signs_symbol/button/
 
 </style>
 
-<div id="info_window" title="info_window" class="ui-widget">  
+<input type="hidden" name="IW_marker_id" id="IW_marker_id"	value="${fieldValue(bean: poiInfoList, field: "id")}" /> 
+<input type="hidden" name="IW_marker_rating" id="IW_marker_rating" value="${fieldValue(bean: poiInfoList, field: "rating")}" />
 
+<div id="info_window" title="info_window" class="ui-widget"> 
 			<h3 class="ui-widget-header ui-corner-all">
 				${fieldValue(bean: poiInfoList, field: "name")}
 			</h3>
@@ -121,22 +147,20 @@ button taken from here http://www.wpclipart.com/signs_symbol/button/
 				<div style="clear: both;"></div>
 			</div>
 							
-				<hr class="bottom_line"/>
+			<hr class="bottom_line"/>
 
-				<div id="rating_counter" title="Rating" class="ui-widget">
-					<label id="IW_rating"></label>
-				</div>
-				
-				<div id="adv" title="Advertising" class="ui-widget">
-					<label> bla bla bla </label>
-				</div>
-				
-		
-		
-
-
+			<div id="rating_counter" title="Rating" class="ui-widget">
+				<input type="button" title="Increase rating" class="plus_button" id="plus_button" onclick="updateRating(true)"	value="+" />
+				<label id="IW_rating"></label>
+				<input type="button" title="Decrease rating" class="minus_button" id="minus_button" onclick="updateRating(false)" value="-" />
+			</div>
+			
+			<hr class="bottom_line"/>
+			
+			<div id="adv" title="Advertising" class="ui-widget">
+				<label> bla  </label>
+			</div>
 </div>	
 
-<input type="hidden" name="IW_marker_id" id="IW_marker_id"	value="${fieldValue(bean: poiInfoList, field: "id")}" /> 
-<input type="hidden" name="IW_marker_rating" id="IW_marker_rating" value="${fieldValue(bean: poiInfoList, field: "rating")}" />
 
+</html>

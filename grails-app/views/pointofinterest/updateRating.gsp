@@ -1,1 +1,1 @@
-${pois.rating}
+${fieldValue(bean: pois, field: "rating")}
