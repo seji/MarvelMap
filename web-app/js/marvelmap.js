@@ -17,19 +17,12 @@ function initialize() {
 
 	// initialize infowindow
 	infowindow = new google.maps.InfoWindow({
-		maxWidth : 10000,
-	// disableAutoPan : true,
-	// content: "id: "+ id +", name: "+ name +", rating: "+ rating
-	 content : ""
+		content : ""
 	});
 	
 	
 	google.maps.event.addListener(infowindow, 'domready', function() {
 		document.getElementById('IW_rating').innerHTML = $("#IW_marker_rating").val();
-		$( "input:submit, input:button").button();
-	    $('#info_window').show();
-	    //$('#info_window').show(); ??????????????????????? reorganize ???
-	    
 	});  
 
 	google.maps.event.addListener(map, 'rightclick', function(event) {
@@ -104,10 +97,9 @@ function showPOIinBounds() {
 
 // /////////////////////////////////////////////////////////////////////////////
 function placeMarker(id, pos, name, desc, rating, newPOI) {
-	var marker = new google.maps.Marker({
+	 var marker = new google.maps.Marker({
 		id : id,
 		position : pos,
-		// title : "id: " + id + ", name: " + name + ", rating: " + rating,
 		title : name,
 		draggable : false,
 		map : map
@@ -178,14 +170,9 @@ function updateRating(increase) {
 
 ///////////////////////////////////////////////////////////////////////////////
 function updateRatingInfoWindow(data) {
-/*	var counter_value = parseInt(data);
-	myCounter.setValue(counter_value,1);
-*/
-	//$('#IW_rating').val(data);
-	// myCounter.incrementTo(counter_value, 5);
 	document.getElementById('IW_rating').innerHTML = data;
 	//$('#IW_rating').val(data);
-	$("input:submit, input:button").hide(1000);
+	//$("input:submit, input:button").effect('fade',100);
 
 }
 
