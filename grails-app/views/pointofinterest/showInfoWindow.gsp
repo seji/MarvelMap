@@ -40,8 +40,8 @@ body {
 	border-color:green;*/
 }
 .image {
-	width: 100px;
-	height: 100px;
+	max-width: 150px;
+	max-height: 150px;
 	/*-moz-box-shadow:    3px 3px 5px 6px #ccc;
   	-webkit-box-shadow: 3px 3px 5px 6px #ccc;*/
  	/*box-shadow:         3px 3px 5px 6px #ccc;*/
@@ -107,7 +107,8 @@ body {
 			<div id="content_wrapper" class="ui-widget">
 				<div id="image_wrapper" title="Image" class="ui-widget">
 					<!-- <img src="http://www.digyourowngrave.com/content/eiffel_tower.jpg" class="image"/> -->
-					<img src="http://olivia2010kroth.files.wordpress.com/2010/03/lac_baikal_02.jpg" class="image"/>
+					<!-- <img src="http://olivia2010kroth.files.wordpress.com/2010/03/lac_baikal_02.jpg" class="image"/> -->
+					<img src="https://encrypted-tbn2.google.com/images?q=tbn:ANd9GcQvFSDvEOtNugFDS_nPu5ZxlyERyU283aKqqfoJylYVNXg41wui" class="image"/>					
 				</div>	
 		
 				<div id="description_wrapper" title="Description" class="ui-widget">
