@@ -69,6 +69,7 @@ body {
     border-bottom: 1px solid rgba(255, 255, 255, 0.3); 
 }
 
+
 #adv {
 	margin: 0;
 	padding: 0.4em;
@@ -108,7 +109,8 @@ body {
 				<div id="image_wrapper" title="Image" class="ui-widget">
 					<!-- <img src="http://www.digyourowngrave.com/content/eiffel_tower.jpg" class="image"/> -->
 					<!-- <img src="http://olivia2010kroth.files.wordpress.com/2010/03/lac_baikal_02.jpg" class="image"/> -->
-					<img src="https://encrypted-tbn2.google.com/images?q=tbn:ANd9GcQvFSDvEOtNugFDS_nPu5ZxlyERyU283aKqqfoJylYVNXg41wui" class="image"/>					
+					<!-- <img src="https://encrypted-tbn2.google.com/images?q=tbn:ANd9GcQvFSDvEOtNugFDS_nPu5ZxlyERyU283aKqqfoJylYVNXg41wui" class="image"/>	 -->	
+					<img src="${fieldValue(bean: poiInfoList, field: "imageURL")}" class="image"/>
 				</div>	
 		
 				<div id="description_wrapper" title="Description" class="ui-widget">
@@ -126,6 +128,7 @@ body {
 				<label id="IW_rating"></label>
 				<input type="button" title="Decrease rating" class="minus_button ui-button-text-only" id="minus_button" onclick="updateRating(false)" value="-" />
 			</div>
+			<div style="clear: both;"></div>
 			
 			<hr class="bottom_line"/>
 			

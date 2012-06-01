@@ -10,7 +10,7 @@ class PointOfInterest {
 	Double lat
 	Double lng
 	Integer rating = new Random().nextInt(99000000);
-	String imageURL = "http://www.digyourowngrave.com/content/eiffel_tower.jpg"
+	String imageURL = "https://encrypted-tbn2.google.com/images?q=tbn:ANd9GcQvFSDvEOtNugFDS_nPu5ZxlyERyU283aKqqfoJylYVNXg41wui"
 
 
  //	static mapWith="mongo"

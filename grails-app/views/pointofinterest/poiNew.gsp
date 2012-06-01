@@ -1,5 +1,5 @@
 <style>
-body { font-size: 100%; }
+body { font-size: 90%; }
 label,input {
 	display: block;
 }
@@ -22,7 +22,7 @@ fieldset {
 
 </script>
 
-<div id="dialog-form" title="Create new Point of Interest">
+<div id="new_POI_dialog" title="Create new Point of Interest">
 	<g:form action="save">
 		<fieldset>
 			<label for="poiName">Enter Point of Interest name</label>

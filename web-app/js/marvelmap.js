@@ -26,6 +26,7 @@ function initialize() {
 	});  
 
 	google.maps.event.addListener(map, 'rightclick', function(event) {
+		infowindow.close();
 		clickLocation = event.latLng;
 		clickZoom = map.getZoom();
 
@@ -184,42 +185,35 @@ function updateRatingInfoWindow(data) {
 function newPOIDialog() {
 
 	$(function() {
-		$("#dialog-form")
-				.dialog(
-						{
-							autoOpen : true,
-							height : 400,
-							width : 500,
-							modal : true,
-							resizable : false,
-							draggable : false,
-							buttons : {
-								"Create" : function() {
-									// var my_form = $('form').serialize();
-									// document.write(my_form);
-									document.getElementById('lat').value = clickLocation
-											.lat();
-									document.getElementById('lng').value = clickLocation
-											.lng();
-									// document.getElementById('zoom').value =
-									// clickZoom.toString();
-									$("#map_canvas").spin("custom", "white");
-									$.post('/MarvelMap/PointOfInterest/save',
-											$('form').serialize(), function(
-													data) {
-												$('.contextMenu').html(data);
-												$('form').empty();// Clear
-												// form data
-												$("#map_canvas").spin(false);
-											});
-									$(this).dialog("close");
-								},
-								"Cancel" : function() {
-									$(this).dialog("close");
-									$('form').empty();// Clear form data
-								}
-							}
-						});
+		$("#new_POI_dialog").dialog({
+			autoOpen : true,
+			height : 400,
+			width : 500,
+			modal : true,
+			resizable : false,
+			draggable : false,
+			buttons : {
+				"Create" : function() {
+					document.getElementById('lat').value = clickLocation.lat();
+					document.getElementById('lng').value = clickLocation.lng();
+					$("#map_canvas").spin("custom", "white");
+					$.post('/MarvelMap/PointOfInterest/save',
+							$('form').serialize(), function(
+									data) {
+								//$('.contextMenu').html(data);
+								$('.contextMenu').html(data);
+								$('form').empty();// Clear
+								// form data
+								$("#map_canvas").spin(false);
+							});
+					$(this).dialog("close");
+				},
+				"Cancel" : function() {
+					$(this).dialog("close");
+					$('form').empty();// Clear form data
+				}
+			}
+		});
 	});
 }
 
@@ -240,6 +234,7 @@ function newPOISaveConfirm() {
 					placeMarker(id, p, n, d, r, true);
 
 					$(this).dialog("close");
+	
 				}
 			}
 		});

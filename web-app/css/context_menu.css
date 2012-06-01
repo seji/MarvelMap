@@ -1,4 +1,5 @@
 .contextMenu {
+	font-size: 90%;
 	position: absolute;
 	z-index: 1000;
 	/*add shadow*/

@@ -10,9 +10,7 @@
 
 <title>Marvel Map 0.1</title>
 
-<link rel="stylesheet"
-	href="${resource(dir: 'css', file: 'context_menu.css')}"
-	type="text/css">
+
 
 <style type="text/css">
 
@@ -25,7 +23,7 @@ body {
 	height: 100%;
 	margin: 0;
 	padding: 0;
-	font-size: 100%;
+	font-size: 90%;
 
 }
 
@@ -33,6 +31,8 @@ body {
 	height: 100%
 }
 </style>
+
+
 
 <script type="text/javascript"
 	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCEevZNwXfSdSvUSsC72_nmEkD4QXRBopg&sensor=false"></script>
@@ -47,9 +47,7 @@ body {
 	href="${resource(dir: 'css/ui-lightness', file: 'jquery-ui-1.8.18.custom.css')}"
 	type="text/css">
 	
-<link rel="stylesheet"
-	href="${resource(dir: 'css', file: 'counter.css')}"
-	type="text/css">
+<link rel="stylesheet" href="${resource(dir: 'css', file: 'context_menu.css')}"	type="text/css">
 
 <script type="text/javascript"
 	src="${resource(dir: 'js', file: 'context_menu.js')}"></script>
