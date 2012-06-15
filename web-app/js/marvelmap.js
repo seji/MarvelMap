@@ -24,7 +24,11 @@ function initialize() {
 	google.maps.event.addListener(infowindow, 'domready', function() {
 		document.getElementById('IW_rating').innerHTML = $("#IW_marker_rating").val();
 	});  
-
+	
+	google.maps.event.addListener(map, 'click', function(event) {
+		infowindow.close();
+	});
+	
 	google.maps.event.addListener(map, 'rightclick', function(event) {
 		infowindow.close();
 		clickLocation = event.latLng;
@@ -259,3 +263,14 @@ $(function() {
 });
 }
 */
+
+function CSEInit(){
+google.load('search', '1', {language : 'en', style : google.loader.themes.V2_DEFAULT});
+google.setOnLoadCallback(function() {
+  var customSearchOptions = {};  
+  var customSearchControl = new google.search.CustomSearchControl(
+    '007249607099659389996:l0fsrgujgta', customSearchOptions);
+  customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+  customSearchControl.draw('cse');
+}, true);
+}

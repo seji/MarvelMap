@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <style>
 body { font-size: 90%; }
 label,input {
@@ -16,11 +17,12 @@ fieldset {
 	margin-top: 25px;
 }
 </style>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+
 <script type="text/javascript">
-
 	newPOIDialog();
-
 </script>
+
 
 <div id="new_POI_dialog" title="Create new Point of Interest">
 	<g:form action="save">
@@ -35,10 +37,14 @@ fieldset {
 			<g:hiddenField type="hidden" name="lat" id="lat" value=""/>
 			<g:hiddenField type="hidden" name="lng" id="lng" value=""/>
 			<g:hiddenField type="hidden" name="zoom" id="zoom" value=""/>
+			
+
+	
 
 		</fieldset>
 	</g:form>
 </div>
+
 
 
 

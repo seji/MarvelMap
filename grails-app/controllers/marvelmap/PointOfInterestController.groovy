@@ -222,6 +222,7 @@ class PointOfInterestController {
 		//println(threePOI)
 		render(view: "showPOIinBounds", model:[threePOIlist: threePOI])
 	}
+	def CSEtest(){}
 }
 
 

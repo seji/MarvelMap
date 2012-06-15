@@ -32,7 +32,7 @@ body {
 }
 </style>
 
-
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
 
 <script type="text/javascript"
 	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCEevZNwXfSdSvUSsC72_nmEkD4QXRBopg&sensor=false"></script>
@@ -70,12 +70,13 @@ body {
 
 <body onload="initialize()">
 
-
 <!--  	<div id="dialog-message">
 		<p>Welcome screen</p>
 	</div>-->
 	
 	<div id="map_canvas" style="width: 100%; height: 100%"></div>
+	
+
 
 
 

@@ -6,7 +6,7 @@ body {
 /*#info_window { width: 400px; height: 300px; padding: 0.4em;}*/
 #info_window { 
 	margin: 0;
-	padding: 0.4em;
+	padding: 0.7em;
 	/*border-style:dashed;
 	border-width:1px;
 	border-color:blue;*/

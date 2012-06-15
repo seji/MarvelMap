@@ -1,23 +1,26 @@
 <style>
-/*	#test .ui-selecting { background: #FECA40; }*/
-/*	#test .ui-selected { background: #F39814; color: white; }*/
-#test ul:hover {
+/*	#main_menu .ui-selecting { background: #FECA40; }*/
+/*	#main_menu .ui-selected { background: #F39814; color: white; }*/
+/*#main_menu ul:hover {
 	background: #FECA40;
 	color: white;
+	className:ui-state-hover;
+}*/
+
+#main_menu {
+	/*list-style-type: none;*/
+	/*margin: 0.4em;*/
+	/*padding: 0.4em;*/
+	/*width: 100%;*/
 }
 
-#test {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	width: 100%;
-}
-
-#test li {
-	margin: 3px;
+#main_menu li {
+	margin: 0 0 0.4em 0;
 	padding: 0.4em;
 	font-size: 1.2em;
-	height: 18px;
+	cursor:pointer;
+	box-shadow: 5px 5px 10px #aaa;
+	opacity:0.9;
 }
 
 /*	label,input {display: block;}
@@ -25,6 +28,17 @@
 	fieldset {padding: 0;border: 0;margin-top: 25px;}
 */
 </style>
+
+<script type="text/javascript">
+$("li").hover(
+		  function () {
+			$(this).removeClass().addClass("ui-state-hover");
+		  }, 
+		  function () {
+			$(this).removeClass().addClass("ui-state-default");
+		  }
+		);
+</script>
 
 <script type="text/javascript">
 	$("#addPOI").click(function() {
@@ -58,8 +72,8 @@
 </script>
 
 <script type="text/javascript">
-	$("#removeAllPOI").click(function() {
-		$.get('/MarvelMap/PointOfInterest/removeAllPOI', function(data) {
+	$("#showCSE").click(function() {
+		$.get('/MarvelMap/PointOfInterest/CSEtest', function(data) {
 			$('.contextMenu').html(data);
 		});
 	});
@@ -80,27 +94,21 @@
 </script>
 
 
+<div id="main_menu">
 
-<div id="test">
-	<ul>
-		<li id="addPOI">Add new Point of Interest</li>
-	</ul>
-	<ul>
-		<li id="lookAround">Create</li>
-	</ul>
-	<ul>
-		<li id="showList">Show List</li>
-	</ul>
-	<ul>
-		<li id="showAllPOI">Show ALL POI on the map</li>
-	</ul>
-	<ul>
-		<li id="removeAllPOI">Remove ALL POI from the map</li>
-	</ul>
-	<ul>
-		<li id="showPOIinBounds">Show POI that fit the current screen</li>
-	</ul>
-	<ul>
-		<li id="showInfoWindow">showInfoWindow</li>
-	</ul>
+		<li id="addPOI" class="ui-state-default">Add new Point of Interest</li>
+
+		<li id="lookAround" class="ui-state-default">Create</li>
+
+	
+		<li id="showList" class="ui-state-default">Show List</li>
+	
+		<li id="showAllPOI" class="ui-state-default">Show ALL POI on the map</li>
+
+		<li id="showCSE" class="ui-state-default">Show CSE</li>
+	
+		<li id="showPOIinBounds" class="ui-state-default">Show POI that fit the current screen</li>
+	
+		<li id="showInfoWindow" class="ui-state-default">showInfoWindow</li>
+
 </div>

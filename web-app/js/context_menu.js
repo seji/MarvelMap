@@ -31,7 +31,8 @@
 
 			// Create the context menu element
 			this.theMenu = $(document.createElement('div'))
-				.attr('class', 'contextMenu')
+				.attr('class', 'contextMenu ui-widget')
+				
 
 				// .. disable the browser context menu on our context menu
 //				.bind('contextmenu', function() { return false; })
@@ -47,6 +48,7 @@
 			g.event.addListener(this.theMap, 'rightclick', function(e)
 			{
 				// Shorthand some stuff
+				infowindow.close();
 				var mapDiv = $(self.theMap.getDiv()),
 					menu = self.theMenu,
 					x = e.pixel.x,
