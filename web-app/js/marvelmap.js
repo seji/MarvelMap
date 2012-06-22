@@ -191,7 +191,7 @@ function newPOIDialog() {
 	$(function() {
 		$("#new_POI_dialog").dialog({
 			autoOpen : true,
-			height : 400,
+			//height : 500,
 			width : 500,
 			modal : true,
 			resizable : false,
@@ -263,14 +263,3 @@ $(function() {
 });
 }
 */
-
-function CSEInit(){
-google.load('search', '1', {language : 'en', style : google.loader.themes.V2_DEFAULT});
-google.setOnLoadCallback(function() {
-  var customSearchOptions = {};  
-  var customSearchControl = new google.search.CustomSearchControl(
-    '007249607099659389996:l0fsrgujgta', customSearchOptions);
-  customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-  customSearchControl.draw('cse');
-}, true);
-}

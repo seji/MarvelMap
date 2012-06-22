@@ -44,7 +44,7 @@ class PointOfInterestController {
 
 	def create() {
 		[pointOfInterestInstance: new PointOfInterest(params)]
-		println(params);
+		//println(params);
 	}
 
 	def save() {
@@ -59,7 +59,7 @@ class PointOfInterestController {
 		//redirect(action: "show", id: pointOfInterestInstance.id)
 		//redirect(action: "poiSaveConfirm")
 		render(view: "poiSaveConfirm", model:[poi : pointOfInterestInstance])
-		//println(params);
+		println(params);
 
 	}
 
