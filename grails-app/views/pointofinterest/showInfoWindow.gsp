@@ -101,19 +101,16 @@ body {
 <input type="hidden" name="IW_marker_rating" id="IW_marker_rating" value="${fieldValue(bean: poiInfoList, field: "rating")}" />
 
 <div id="info_window" class="ui-widget"> 
-			<h3 title="Name" class="ui-widget-header ui-corner-all">
+			<h3 class="ui-widget-header ui-corner-all">
 				${fieldValue(bean: poiInfoList, field: "name")}
 			</h3>
 
 			<div id="content_wrapper" class="ui-widget">
-				<div id="image_wrapper" title="Image" class="ui-widget">
-					<!-- <img src="http://www.digyourowngrave.com/content/eiffel_tower.jpg" class="image"/> -->
-					<!-- <img src="http://olivia2010kroth.files.wordpress.com/2010/03/lac_baikal_02.jpg" class="image"/> -->
-					<!-- <img src="https://encrypted-tbn2.google.com/images?q=tbn:ANd9GcQvFSDvEOtNugFDS_nPu5ZxlyERyU283aKqqfoJylYVNXg41wui" class="image"/>	 -->	
+				<div id="image_wrapper" class="ui-widget">
 					<img src="${fieldValue(bean: poiInfoList, field: "imageURL")}" class="image"/>
 				</div>	
 		
-				<div id="description_wrapper" title="Description" class="ui-widget">
+				<div id="description_wrapper" class="ui-widget">
 					<label>
 						 ${fieldValue(bean: poiInfoList, field: "description")}
 					</label>

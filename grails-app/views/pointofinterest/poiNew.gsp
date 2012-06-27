@@ -23,6 +23,14 @@ fieldset {
 	padding: 0.4em;
 }
 
+
+#image_search_results{
+	/*border-style:dashed;
+	border-width:1px;
+	border-color:blue;*/
+    text-align: center;
+}
+
 .cse_image{
 	/*border-style:dashed;
 	border-width:1px;
@@ -38,13 +46,6 @@ fieldset {
 	box-shadow: 6px 6px 10px orange;
 
 }
-#image_search_results{
-	/*border-style:dashed;
-	border-width:1px;
-	border-color:blue;*/
-    text-align: center;
-	
-}
 
 </style>
 <script src="http://www.google.com/jsapi" type="text/javascript"></script>
@@ -54,16 +55,23 @@ fieldset {
 </script>
 
 <script type="text/javascript">
-function imageSearch(search_string) {
+function imageSearch(search_string, target_div) {
 
-	var cse_url_key = "AIzaSyCEevZNwXfSdSvUSsC72_nmEkD4QXRBopg"; //this is my personal key
-	var cse_url_id = "007249607099659389996:l0fsrgujgta"; //this is my personal CSE id
-	var cse_url_query =	search_string;	
-	var cse_url_imgSize= "large";
-	var cse_url = "https://www.googleapis.com/customsearch/v1?key="+cse_url_key+"&cx="+cse_url_id+"&q="+cse_url_query+"&searchType=image&fileType=jpg&imgSize="+cse_url_imgSize+"&alt=json";
+	if (search_string ==""){return} 
 
-	$.getJSON(cse_url, function(data) {
-			
+	$(target_div).empty();
+
+	$.getJSON("https://www.googleapis.com/customsearch/v1?", {
+		key : "AIzaSyCEevZNwXfSdSvUSsC72_nmEkD4QXRBopg", //this is my personal key
+		cx : "007249607099659389996:l0fsrgujgta", //this is my personal CSE id
+		q :	search_string,
+		searchType : "image",
+		//fileType : "jpg",
+		//imgSize : "large",
+		safe : "high",
+		alt : "json"
+		}, 
+		function(data) {
 			    $.each(data.items, function(i,item){
 			      $("<img/>")
 			      .attr({
@@ -72,7 +80,17 @@ function imageSearch(search_string) {
 					      class: "cse_image ui-corner-all"
 			    		})
 			    .click(function(){
-				    alert('click');
+			    	document.getElementById('imageURL').value = item.image.thumbnailLink;
+			    	$(target_div).empty();
+
+			    	$("<img/>").attr({
+						      src: item.image.thumbnailLink,
+						      id: "cse_img",
+						      class: "cse_image ui-corner-all"
+				    		}).appendTo(target_div);
+
+			    	
+			    	
 				    
 				    })
 				.hover(function(){
@@ -80,12 +98,8 @@ function imageSearch(search_string) {
 			    	},function() {	
 			    		$(this).removeClass("cse_image_hover")
 			    	}
-
-
 		    	)
-			    .appendTo("#image_search_results");
-
-
+			    .appendTo(target_div);
 			      //if ( i == 4 ) return false;
 			    });
 			  });
@@ -101,7 +115,7 @@ $("#name_text_field").focusout(function() {
 	var _name = $("#name_text_field").val();
 	
 	//$("#image_search_results").text(imageSearch(_name));
-	imageSearch(_name);
+	imageSearch(_name,"#image_search_results");
 	
 	});
 
@@ -119,7 +133,7 @@ $("#name_text_field").focusout(function() {
 			<g:hiddenField type="hidden" name="lat" id="lat" value=""/>
 			<g:hiddenField type="hidden" name="lng" id="lng" value=""/>
 			<g:hiddenField type="hidden" name="zoom" id="zoom" value=""/>
-			
+			<g:hiddenField type="hidden" name="imageURL" id="imageURL" value=""/>
 			<div id="image_search_results"></div>
 			
 
