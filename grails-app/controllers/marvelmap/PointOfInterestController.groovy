@@ -200,27 +200,42 @@ class PointOfInterestController {
 
 	//def markerService = new MarkerService();
 	def showPOIinBounds(){
+		def poiCount = 3; //how many POIs we want to show
 		//println(params)
 		//convert string representation of bounds latlng back to Double
 		Double dSWlat = params.SWlat.toDouble();
 		Double dNElat = params.NElat.toDouble();
 		Double dSWlng = params.SWlng.toDouble();
 		Double dNElng = params.NElng.toDouble();
-		
-		//if (dNElng < 179.99){println('NElng > 179.99')}
-		
 
-		def c = PointOfInterest.createCriteria()
-		def threePOI = c.list {
+		if (dSWlng > dNElng)
+		{
+			//println('edge is on the screen');
+			def c = PointOfInterest.createCriteria()
+			def threePOI = c.list {
+				between('lat', dSWlat, dNElat)
+				or {
+					between('lng', dSWlng, 180) 
+					between('lng', -180, dNElng)
+					}
+				maxResults(poiCount)
+				order("rating", "desc")
+			};
+			//println(threePOI)
+			render(view: "showPOIinBounds", model:[threePOIlist: threePOI])
+		}
+		else
+		{
+			def c = PointOfInterest.createCriteria()
+			def threePOI = c.list {
 			between('lat', dSWlat, dNElat)
-			and {
-				between('lng', dSWlng, dNElng)
-			}
-			maxResults(3)
+			between('lng', dSWlng, dNElng)
+			maxResults(poiCount)
 			order("rating", "desc")
 		};
 		//println(threePOI)
 		render(view: "showPOIinBounds", model:[threePOIlist: threePOI])
+		}
 	}
 	def CSEtest(){}
 }
