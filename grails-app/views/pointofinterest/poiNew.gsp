@@ -35,16 +35,38 @@ fieldset {
 	/*border-style:dashed;
 	border-width:1px;
 	border-color:red;*/
+	opacity: 0.7;
 	max-width: 84px;
 	max-height: 84px;
-	margin: 0.2em;
+	margin: 0.4em;
 	vertical-align: middle;
+	border: 5px solid #eee;
 	box-shadow: 3px 3px 5px #999;
+	
+	/*Transition*/
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+ 
+	/*Reflection
+	-webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(.7, transparent), to(rgba(0,0,0,0.1)));
+	*/
+	
 }
 
 .cse_image_hover{
-	box-shadow: 6px 6px 10px orange;
+	opacity: 1;
+	/*Glow*/
+	-webkit-box-shadow: 0px 0px 50px rgba(246,173,53,0.9);
+	-moz-box-shadow: 0px 0px 50px rgba(246,173,53,0.9);
+	box-shadow: 0px 0px 50px rgba(246,173,53,0.9);
+}
 
+.cse_image_clicked{
+	opacity: 1;
+	max-width: 150px;
+	max-height: 150px;
+	box-shadow: 3px 3px 5px #999;
 }
 
 </style>
@@ -86,7 +108,7 @@ function imageSearch(search_string, target_div) {
 			    	$("<img/>").attr({
 						      src: item.image.thumbnailLink,
 						      id: "cse_img",
-						      class: "cse_image ui-corner-all"
+						      class: "cse_image_clicked ui-corner-all"
 				    		}).appendTo(target_div);
 
 			    	
@@ -116,6 +138,7 @@ $("#name_text_field").focusout(function() {
 	
 	//$("#image_search_results").text(imageSearch(_name));
 	imageSearch(_name,"#image_search_results");
+	
 	
 	});
 

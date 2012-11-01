@@ -3,7 +3,7 @@
 body {
 	font-size: 90%;
 }
-/*#info_window { width: 400px; height: 300px; padding: 0.4em;}*/
+
 #info_window { 
 	margin: 0;
 	padding: 0.7em;
@@ -39,13 +39,12 @@ body {
 	border-width:1px;
 	border-color:green;*/
 }
-.image {
+#poiImage {
 	max-width: 150px;
 	max-height: 150px;
-	/*-moz-box-shadow:    3px 3px 5px 6px #ccc;
-  	-webkit-box-shadow: 3px 3px 5px 6px #ccc;*/
- 	/*box-shadow:         3px 3px 5px 6px #ccc;*/
- 	box-shadow: 3px 3px 5px #999;
+	-moz-box-shadow:    3px 3px 5px #999;
+  	-webkit-box-shadow: 3px 3px 5px #999;
+ 	box-shadow:         3px 3px 5px #999;
 }
 
 #rating_counter {
@@ -107,7 +106,7 @@ body {
 
 			<div id="content_wrapper" class="ui-widget">
 				<div id="image_wrapper" class="ui-widget">
-					<img src="${fieldValue(bean: poiInfoList, field: "imageURL")}" class="image"/>
+					<img src="${fieldValue(bean: poiInfoList, field: "imageURL")}" id="poiImage"/>
 				</div>	
 		
 				<div id="description_wrapper" class="ui-widget">

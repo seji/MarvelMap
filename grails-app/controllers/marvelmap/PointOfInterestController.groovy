@@ -212,7 +212,7 @@ class PointOfInterestController {
 		{
 			//println('edge is on the screen');
 			def c = PointOfInterest.createCriteria()
-			def threePOI = c.list {
+			def poiToShow = c.list {
 				between('lat', dSWlat, dNElat)
 				or {
 					between('lng', dSWlng, 180) 
@@ -221,20 +221,20 @@ class PointOfInterestController {
 				maxResults(poiCount)
 				order("rating", "desc")
 			};
-			//println(threePOI)
-			render(view: "showPOIinBounds", model:[threePOIlist: threePOI])
+			//println(poiToShow)
+			render(view: "showPOIinBounds", model:[poiToShowlist: poiToShow])
 		}
 		else
 		{
 			def c = PointOfInterest.createCriteria()
-			def threePOI = c.list {
+			def poiToShow = c.list {
 			between('lat', dSWlat, dNElat)
 			between('lng', dSWlng, dNElng)
 			maxResults(poiCount)
 			order("rating", "desc")
 		};
-		//println(threePOI)
-		render(view: "showPOIinBounds", model:[threePOIlist: threePOI])
+		//println(poiToShow)
+		render(view: "showPOIinBounds", model:[poiToShowlist: poiToShow])
 		}
 	}
 	def CSEtest(){}

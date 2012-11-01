@@ -49,13 +49,6 @@ $("li").hover(
 </script>
 
 <script type="text/javascript">
-	$("#lookAround").click(function() {
-		$.get('/MarvelMap/PointOfInterest/create', function(data) {
-			$('.contextMenu').html(data);
-		});
-	});
-</script>
-<script type="text/javascript">
 	$("#showList").click(function() {
 		$.get('/MarvelMap/PointOfInterest/list', function(data) {
 			$('.contextMenu').html(data);
@@ -71,44 +64,8 @@ $("li").hover(
 	});
 </script>
 
-<script type="text/javascript">
-	$("#showCSE").click(function() {
-		$.get('/MarvelMap/PointOfInterest/CSEtest', function(data) {
-			$('.contextMenu').html(data);
-		});
-	});
-</script>
-
-
-<script type="text/javascript">
-	$("#showPOIinBounds").click(function() {
-		$.post('/MarvelMap/PointOfInterest/showPOIinBounds', {
-			NElat : map.getBounds().getNorthEast().lat(),
-			NElng : map.getBounds().getNorthEast().lng(),
-			SWlat : map.getBounds().getSouthWest().lat(),
-			SWlng : map.getBounds().getSouthWest().lng()
-		}, function(data) {
-			$('.contextMenu').html(data);
-		});
-	});
-</script>
-
-
 <div id="main_menu">
-
 		<li id="addPOI" class="ui-state-default">Add new Point of Interest</li>
-
-		<li id="lookAround" class="ui-state-default">Create</li>
-
-	
 		<li id="showList" class="ui-state-default">Show List</li>
-	
 		<li id="showAllPOI" class="ui-state-default">Show ALL POI on the map</li>
-
-		<li id="showCSE" class="ui-state-default">Show CSE</li>
-	
-		<li id="showPOIinBounds" class="ui-state-default">Show POI that fit the current screen</li>
-	
-		<li id="showInfoWindow" class="ui-state-default">showInfoWindow</li>
-
 </div>

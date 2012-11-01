@@ -1,5 +1,5 @@
 
-<g:each in="${threePOIlist}" status="i" var="pointOfInterestInstance">
+<g:each in="${poiToShowlist}" status="i" var="pointOfInterestInstance">
 	<script type="text/javascript">	
 		var p = new google.maps.LatLng(${fieldValue(bean: pointOfInterestInstance, field: "lat")},${fieldValue(bean: pointOfInterestInstance, field: "lng")});
 		var n = "${fieldValue(bean: pointOfInterestInstance, field: "name")}"
